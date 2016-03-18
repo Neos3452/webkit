@@ -316,6 +316,19 @@ messages -> WebPage LegacyReceiver {
     DisableEnumeratingAllNetworkInterfaces()
 #endif
 
+
+#if ENABLE(WEB_DIAL)
+    # WebDial
+    DidReceiveLocalNetworkDiscoveryPermissionDecision(uint64_t discoveryID, bool allowed)
+
+    #TODO this should be done in a constructor
+    PrepareDialChannelProxy()
+
+    DidReceiveDialMessage(Vector<uint8_t> data)
+    DidErrorDialChannel(String reason)
+    DidCloseDialChannel()
+#endif
+
     # Notification
     DidReceiveNotificationPermissionDecision(uint64_t notificationID, bool allowed)
 

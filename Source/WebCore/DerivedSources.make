@@ -49,6 +49,7 @@ VPATH = \
     $(WebCore)/Modules/streams \
     $(WebCore)/Modules/webaudio \
     $(WebCore)/Modules/webdatabase \
+    $(WebCore)/Modules/webdial \
     $(WebCore)/Modules/webdriver \
     $(WebCore)/Modules/websockets \
     $(WebCore)/animation \
@@ -275,6 +276,12 @@ JS_BINDING_IDLS = \
     $(WebCore)/Modules/webdatabase/SQLTransaction.idl \
     $(WebCore)/Modules/webdatabase/SQLTransactionCallback.idl \
     $(WebCore)/Modules/webdatabase/SQLTransactionErrorCallback.idl \
+    $(WebCore)/Modules/webdial/LocalNetworkDevice.idl \
+    $(WebCore)/Modules/webdial/LocalNetworkDeviceDescriptor.idl \
+    $(WebCore)/Modules/webdial/LocalNetworkDevices.idl \
+    $(WebCore)/Modules/webdial/NavigatorLocalNetworkDevices.idl \
+    $(WebCore)/Modules/webdial/RemoteApplication.idl \
+    $(WebCore)/Modules/webdial/StateChangedEvent.idl \
     $(WebCore)/Modules/webdriver/NavigatorWebDriver.idl \
     $(WebCore)/Modules/websockets/CloseEvent.idl \
     $(WebCore)/Modules/websockets/WebSocket.idl \

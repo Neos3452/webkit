@@ -85,7 +85,7 @@ void InjectedScriptBase::makeCall(Deprecated::ScriptFunctionCall& function, RefP
     bool hadException = false;
     auto resultValue = callFunctionWithEvalEnabled(function, hadException);
 
-    ASSERT(!hadException);
+//    ASSERT(!hadException);
     if (!hadException) {
         *result = toInspectorValue(*m_injectedScriptObject.scriptState(), resultValue);
         if (!*result)

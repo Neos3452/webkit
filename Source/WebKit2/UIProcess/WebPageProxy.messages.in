@@ -275,6 +275,17 @@ messages -> WebPageProxy {
     EnumerateMediaDevicesForFrame(uint64_t userMediaID, uint64_t frameID, struct WebCore::SecurityOriginData userMediaDocumentOriginIdentifier, struct WebCore::SecurityOriginData topLevelDocumentOriginIdentifier)
 #endif
 
+#if ENABLE(WEB_DIAL)
+    # WebDial messages
+    RequestLocalNetworkDiscoveryPermissionForFrame(uint64_t discoveryID, uint64_t frameID, String originIdentifier)
+
+    # Channel will be opened by UIProcess this is to send confirmation
+    DidOpenDialChannel()
+    ReopenDialChannel()
+    SendDialMessage(Vector<uint8_t> data)
+    CloseDialChannel()
+#endif
+
     # Notification messages
     RequestNotificationPermission(uint64_t requestID, String originIdentifier)
     ShowNotification(String title, String body, String iconURL, String tag, String lang, enum WebCore::NotificationDirection dir, String originIdentifier, uint64_t notificationID)

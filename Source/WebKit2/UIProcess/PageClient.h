@@ -146,6 +146,11 @@ public:
         return false;
     }
 
+    virtual bool decidePolicyForLocalNetworkDiscoveryPermissionRequest(WebFrameProxy&, API::SecurityOrigin&, LocalNetworkDiscoveryPermissionRequestProxy&)
+    {
+        return false;
+    }
+
     virtual void didStartProvisionalLoadForMainFrame() { };
     virtual void didFailProvisionalLoadForMainFrame() { };
     virtual void didCommitLoadForMainFrame(const String& mimeType, bool useCustomContentProvider) = 0;

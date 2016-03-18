@@ -121,6 +121,8 @@ private:
 
         void imageOrMediaDocumentSizeChanged(const WebCore::IntSize&) override;
 
+        bool decidePolicyForLocalNetworkDiscoveryPermissionRequest(WebPageProxy&, WebFrameProxy&, API::SecurityOrigin&, LocalNetworkDiscoveryPermissionRequestProxy&) override;
+
         UIDelegate& m_uiDelegate;
     };
 

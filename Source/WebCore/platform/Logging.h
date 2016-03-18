@@ -88,6 +88,7 @@ namespace WebCore {
     M(Threading) \
     M(URLParser) \
     M(WebAudio) \
+    M(WebDial) \
     M(WebGL) \
     M(WebGPU) \
     M(WebRTC) \

@@ -351,6 +351,7 @@ WebPageProxy::WebPageProxy(PageClient& pageClient, WebProcessProxy& process, uin
 #endif
     , m_geolocationPermissionRequestManager(*this)
     , m_notificationPermissionRequestManager(*this)
+    , m_localNetworkDiscoveryPermissionRequestManager(*this)
 #if PLATFORM(IOS)
     , m_alwaysRunsAtForegroundPriority(m_configuration->alwaysRunsAtForegroundPriority())
 #endif
@@ -3849,6 +3850,32 @@ void WebPageProxy::showPage()
     m_uiClient->showPage(this);
 }
 
+#if ENABLE(WEB_DIAL)
+void WebPageProxy::didOpenDialChannel()
+{
+    ASSERT(m_discoveryServiceInvoker);
+    m_discoveryServiceInvoker->didOpenDialChannel();
+}
+
+void WebPageProxy::reopenDialChannel()
+{
+    ASSERT(m_discoveryServiceInvoker);
+    m_discoveryServiceInvoker->reopenDialChannel();
+}
+
+void WebPageProxy::sendDialMessage(const Vector<uint8_t> message)
+{
+    ASSERT(m_discoveryServiceInvoker);
+    m_discoveryServiceInvoker->sendDialMessage(message);
+}
+
+void WebPageProxy::closeDialChannel()
+{
+    ASSERT(m_discoveryServiceInvoker);
+    m_discoveryServiceInvoker->closeDialChannel();
+}
+#endif // ENABLE(WEB_DIAL)
+
 void WebPageProxy::fullscreenMayReturnToInline()
 {
     m_uiClient->fullscreenMayReturnToInline(this);
@@ -5387,6 +5414,9 @@ void WebPageProxy::resetState(ResetStateReason resetStateReason)
 #if ENABLE(MEDIA_STREAM)
     m_userMediaPermissionRequestManager = nullptr;
 #endif
+#if ENABLE(WEB_DIAL)
+    m_localNetworkDiscoveryPermissionRequestManager.invalidateRequests();
+#endif
 
     m_notificationPermissionRequestManager.invalidateRequests();
 
@@ -5761,6 +5791,30 @@ void WebPageProxy::clearUserMediaState()
 {
 #if ENABLE(MEDIA_STREAM)
     userMediaPermissionRequestManager().clearCachedState();
+#endif
+}
+
+void WebPageProxy::requestLocalNetworkDiscoveryPermissionForFrame(uint64_t discoveryID, uint64_t frameID, String originIdentifier)
+{
+#if ENABLE(WEB_DIAL)
+    WebFrameProxy* frame = m_process->webFrame(frameID);
+    MESSAGE_CHECK(frame);
+
+    // FIXME: is this FIXME the same as geolocation?
+    RefPtr<API::SecurityOrigin> origin = API::SecurityOrigin::create(SecurityOriginData::fromDatabaseIdentifier(originIdentifier)->securityOrigin());
+    RefPtr<LocalNetworkDiscoveryPermissionRequestProxy> request = m_localNetworkDiscoveryPermissionRequestManager.createRequest(discoveryID);
+
+    if (m_uiClient->decidePolicyForLocalNetworkDiscoveryPermissionRequest(*this, *frame, *origin.get(), *request.get()))
+        return;
+
+    if (m_pageClient.decidePolicyForLocalNetworkDiscoveryPermissionRequest(*frame, *origin, *request))
+        return;
+    
+    request->deny();
+#else
+    UNUSED_PARAM(discoveryID);
+    UNUSED_PARAM(frameID);
+    UNUSED_PARAM(originIdentifier);
 #endif
 }
 

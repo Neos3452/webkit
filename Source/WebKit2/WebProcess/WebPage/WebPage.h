@@ -33,11 +33,13 @@
 #include "APIInjectedBundlePageUIClient.h"
 #include "APIObject.h"
 #include "CallbackID.h"
+#include "DiscoveryServiceChannelProxy.h"
 #include "EditingRange.h"
 #include "InjectedBundlePageContextMenuClient.h"
 #include "InjectedBundlePageFullScreenClient.h"
 #include "InjectedBundlePagePolicyClient.h"
 #include "LayerTreeContext.h"
+#include "LocalNetworkDiscoveryPermissionRequestManager.h"
 #include "MessageReceiver.h"
 #include "MessageSender.h"
 #include "OptionalCallbackID.h"
@@ -509,6 +511,14 @@ public:
 
 #if ENABLE(MEDIA_STREAM)
     UserMediaPermissionRequestManager& userMediaPermissionRequestManager() { return *m_userMediaPermissionRequestManager; }
+#endif
+
+#if ENABLE(WEB_DIAL)
+    RefPtr<WebCore::DiscoveryServiceChannel> getDialChannelProxy() {
+        return m_dialChannelProxy;
+    }
+
+    inline LocalNetworkDiscoveryPermissionRequestManager& localNetworkDiscoveryPermissionRequestManager() { return m_localNetworkDiscoveryPermissionRequestManager; }
 #endif
 
     void elementDidFocus(WebCore::Node*);
@@ -1205,6 +1215,15 @@ private:
 #endif
 #endif
 
+#if ENABLE(WEB_DIAL)
+    void didReceiveLocalNetworkDiscoveryPermissionDecision(uint64_t discoveryID, bool allowed);
+
+    void prepareDialChannelProxy();
+    void didReceiveDialMessage(const Vector<uint8_t>&);
+    void didErrorDialChannel(const String& reason);
+    void didCloseDialChannel();
+#endif
+
     void advanceToNextMisspelling(bool startBeforeSelection);
     void changeSpellingToWord(const String& word);
 #if USE(APPKIT)
@@ -1427,6 +1446,12 @@ private:
 
 #if ENABLE(MEDIA_STREAM)
     std::unique_ptr<UserMediaPermissionRequestManager> m_userMediaPermissionRequestManager;
+#endif
+
+#if ENABLE(WEB_DIAL)
+    LocalNetworkDiscoveryPermissionRequestManager m_localNetworkDiscoveryPermissionRequestManager;
+
+    RefPtr<DiscoveryServiceChannelProxy> m_dialChannelProxy;
 #endif
 
     std::unique_ptr<WebCore::PrintContext> m_printContext;

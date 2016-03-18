@@ -30,6 +30,7 @@
 #include "AutoCorrectionCallback.h"
 #include "Connection.h"
 #include "ContextMenuContextData.h"
+#include "DiscoveryServiceInvoker.h"
 #include "DownloadID.h"
 #include "DragControllerAction.h"
 #include "EditingRange.h"
@@ -37,6 +38,7 @@
 #include "GeolocationPermissionRequestManagerProxy.h"
 #include "HiddenPageThrottlingAutoIncreasesCounter.h"
 #include "LayerTreeContext.h"
+#include "LocalNetworkDiscoveryPermissionRequestManagerProxy.h"
 #include "MessageSender.h"
 #include "NotificationPermissionRequestManagerProxy.h"
 #include "PageLoadState.h"
@@ -312,6 +314,15 @@ public:
         
 #if ENABLE(ASYNC_SCROLLING)
     RemoteScrollingCoordinatorProxy* scrollingCoordinatorProxy() const { return m_scrollingCoordinatorProxy.get(); }
+#endif
+
+#if ENABLE(WEB_DIAL)
+    void setDiscoveryServiceInvoker(Ref<DiscoveryServiceInvoker>&& invoker) { m_discoveryServiceInvoker = WTFMove(invoker); }
+
+    void didOpenDialChannel();
+    void reopenDialChannel();
+    void sendDialMessage(const Vector<uint8_t>);
+    void closeDialChannel();
 #endif
 
     WebBackForwardList& backForwardList() { return m_backForwardList; }
@@ -1333,6 +1344,8 @@ private:
     void requestUserMediaPermissionForFrame(uint64_t userMediaID, uint64_t frameID, const WebCore::SecurityOriginData& userMediaDocumentOriginIdentifier, const WebCore::SecurityOriginData& topLevelDocumentOriginIdentifier, const WebCore::MediaConstraints& audioConstraints, const WebCore::MediaConstraints& videoConstraints);
     void enumerateMediaDevicesForFrame(uint64_t userMediaID, uint64_t frameID, const WebCore::SecurityOriginData& userMediaDocumentOriginData, const WebCore::SecurityOriginData& topLevelDocumentOriginData);
 
+    void requestLocalNetworkDiscoveryPermissionForFrame(uint64_t discoveryID, uint64_t frameID, String originIdentifier);
+
     void runModal();
     void notifyScrollerThumbIsVisibleInRect(const WebCore::IntRect&);
     void recommendedScrollbarStyleDidChange(int32_t newStyle);
@@ -1646,6 +1659,9 @@ private:
 #if ENABLE(ASYNC_SCROLLING)
     std::unique_ptr<RemoteScrollingCoordinatorProxy> m_scrollingCoordinatorProxy;
 #endif
+#if ENABLE(WEB_DIAL)
+    RefPtr<DiscoveryServiceInvoker> m_discoveryServiceInvoker;
+#endif
 
     Ref<WebProcessProxy> m_process;
     Ref<WebPageGroup> m_pageGroup;
@@ -1725,6 +1741,7 @@ private:
 
     WebCore::ActivityState::Flags m_activityState { WebCore::ActivityState::NoFlags };
     bool m_viewWasEverInWindow { false };
+    LocalNetworkDiscoveryPermissionRequestManagerProxy m_localNetworkDiscoveryPermissionRequestManager;
 #if PLATFORM(IOS)
     bool m_allowsMediaDocumentInlinePlayback { false };
     bool m_alwaysRunsAtForegroundPriority { false };

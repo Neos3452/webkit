@@ -83,6 +83,7 @@
 #import "WebKitStatisticsPrivate.h"
 #import "WebKitVersionChecks.h"
 #import "WebLocalizableStrings.h"
+#import "WebLocalNetworkDiscovererClient.h"
 #import "WebNSDataExtras.h"
 #import "WebNSDataExtrasPrivate.h"
 #import "WebNSDictionaryExtras.h"
@@ -1479,6 +1480,10 @@ static void WebKitInitializeGamepadProviderIfNecessary()
 #endif
 #if ENABLE(MEDIA_STREAM)
     WebCore::provideUserMediaTo(_private->page, new WebUserMediaClient(self));
+#endif
+
+#if ENABLE(WEB_DIAL)
+    WebCore::provideLocalNetworkDiscoveryTo(_private->page, new WebLocalNetworkDiscovererClient(self));
 #endif
 
 #if ENABLE(REMOTE_INSPECTOR)

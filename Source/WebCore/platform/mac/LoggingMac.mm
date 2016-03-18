@@ -32,11 +32,12 @@
 
 namespace WebCore {
 
-static NSString * const defaultsDomain = @"WebCoreLogging";
+//static NSString * const defaultsDomain = @"WebCoreLogging";
 
 String logLevelString()
 {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:defaultsDomain];
+//    return [[NSUserDefaults standardUserDefaults] stringForKey:defaultsDomain];
+    return "WebDial";
 }
 
 }

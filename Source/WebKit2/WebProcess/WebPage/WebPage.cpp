@@ -93,6 +93,7 @@
 #include "WebInspectorMessages.h"
 #include "WebInspectorUI.h"
 #include "WebInspectorUIMessages.h"
+#include "WebLocalNetworkDiscovererClient.h"
 #include "WebMediaKeyStorageManager.h"
 #include "WebNotificationClient.h"
 #include "WebOpenPanelResultListener.h"
@@ -342,6 +343,9 @@ WebPage::WebPage(uint64_t pageID, WebPageCreationParameters&& parameters)
 #if ENABLE(MEDIA_STREAM)
     , m_userMediaPermissionRequestManager { std::make_unique<UserMediaPermissionRequestManager>(*this) }
 #endif
+#if ENABLE(WEB_DIAL)
+    , m_localNetworkDiscoveryPermissionRequestManager(*this)
+#endif
     , m_pageScrolledHysteresis([this](HysteresisState state) { if (state == HysteresisState::Stopped) pageStoppedScrolling(); }, pageScrollHysteresisDuration)
     , m_canRunBeforeUnloadConfirmPanel(parameters.canRunBeforeUnloadConfirmPanel)
     , m_canRunModal(parameters.canRunModal)
@@ -439,6 +443,9 @@ WebPage::WebPage(uint64_t pageID, WebPageCreationParameters&& parameters)
 #endif
 #if ENABLE(MEDIA_STREAM)
     WebCore::provideUserMediaTo(m_page.get(), new WebUserMediaClient(*this));
+#endif
+#if ENABLE(WEB_DIAL)
+    WebCore::provideLocalNetworkDiscoveryTo(m_page.get(), new WebLocalNetworkDiscovererClient(*this));
 #endif
 
     m_page->setControlledByAutomation(parameters.controlledByAutomation);
@@ -3888,6 +3895,36 @@ void WebPage::revokeUserMediaDeviceSandboxExtensions(const Vector<String>& exten
     m_userMediaPermissionRequestManager->revokeUserMediaDeviceSandboxExtensions(extensionIDs);
 }
 #endif
+#endif
+
+#if ENABLE(WEB_DIAL)
+void WebPage::didReceiveLocalNetworkDiscoveryPermissionDecision(uint64_t discoveryID, bool allowed)
+{
+    m_localNetworkDiscoveryPermissionRequestManager.didReceiveLocalNetworkDiscoveryPermissionDecision(discoveryID, allowed);
+}
+
+void WebPage::prepareDialChannelProxy()
+{
+    m_dialChannelProxy = DiscoveryServiceChannelProxy::create(*this);
+}
+
+void WebPage::didReceiveDialMessage(const Vector<uint8_t>& message)
+{
+    ASSERT(m_dialChannelProxy);
+    m_dialChannelProxy->messageReceived(message);
+}
+
+void WebPage::didErrorDialChannel(const String& reason)
+{
+    ASSERT(m_dialChannelProxy);
+    m_dialChannelProxy->errorReceived(reason);
+}
+
+void WebPage::didCloseDialChannel()
+{
+    ASSERT(m_dialChannelProxy);
+    m_dialChannelProxy->closedReceived();
+}
 #endif
 
 #if !PLATFORM(IOS)

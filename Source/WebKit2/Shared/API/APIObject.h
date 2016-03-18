@@ -165,6 +165,11 @@ public:
         MediaSessionMetadata,
 #endif
 
+#if ENABLE(WEB_DIAL)
+        DiscoveryService,
+        LocalNetworkDiscoveryPermissionRequest,
+#endif
+
         // Bundle types
         Bundle,
         BundleBackForwardList,

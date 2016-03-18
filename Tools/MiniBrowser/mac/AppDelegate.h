@@ -24,11 +24,13 @@
  */
 
 @class ExtensionManagerWindowController;
+@class UserScriptsManagerWindowController;
 
 @interface BrowserAppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableSet *_browserWindowControllers;
 #if WK_API_ENABLED
     ExtensionManagerWindowController *_extensionManagerWindowController;
+    UserScriptsManagerWindowController *_userScriptsManagerWindowController;
 #endif
 
     IBOutlet NSMenuItem *_newWebKit1WindowItem;

@@ -1032,18 +1032,57 @@
 		1CCDF5BD1990332400BCEBAD /* SVGToOTFFontConversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CCDF5BB1990332400BCEBAD /* SVGToOTFFontConversion.cpp */; };
 		1CCDF5BE1990332400BCEBAD /* SVGToOTFFontConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CCDF5BC1990332400BCEBAD /* SVGToOTFFontConversion.h */; };
 		1CFAE3230A6D6A3F0032593D /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFAE3220A6D6A3F0032593D /* libobjc.dylib */; };
+		1F0FE1081F0EBEE20057D049 /* DiscoveryServiceChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FE1071F0EBEE20057D049 /* DiscoveryServiceChannel.cpp */; };
 		1F36EA9C1E21BA1700621E25 /* WebBackgroundTaskController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F36EA9A1E21BA1700621E25 /* WebBackgroundTaskController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1F36EA9D1E21BA1700621E25 /* WebBackgroundTaskController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F36EA9B1E21BA1700621E25 /* WebBackgroundTaskController.mm */; };
+		1F37CF4F1CDA5227003B676B /* LocalNetworkDiscoveryProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F37CF4D1CDA5227003B676B /* LocalNetworkDiscoveryProvider.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1F3C3BEA135CAF3C00B8C1AC /* MediaControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C3BE8135CAF3C00B8C1AC /* MediaControls.cpp */; };
 		1F3C3BEB135CAF3C00B8C1AC /* MediaControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3C3BE9135CAF3C00B8C1AC /* MediaControls.h */; };
 		1F4B419B1E2301C900AC037F /* WebSQLiteDatabaseTrackerClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F8756B01E22BEEF0042C40D /* WebSQLiteDatabaseTrackerClient.mm */; };
+		1F5E6EB21C9B64CC00705954 /* JSRemoteApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E6EB11C9B612400705954 /* JSRemoteApplication.cpp */; };
+		1F5E6EBC1C9B65FE00705954 /* JSLocalNetworkDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E6EB31C9B65FE00705954 /* JSLocalNetworkDevice.cpp */; };
+		1F5E6EBD1C9B65FE00705954 /* JSLocalNetworkDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F5E6EB41C9B65FE00705954 /* JSLocalNetworkDevice.h */; };
+		1F5E6EBE1C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E6EB51C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.cpp */; };
+		1F5E6EBF1C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F5E6EB61C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.h */; };
+		1F5E6EC01C9B65FE00705954 /* JSLocalNetworkDevices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E6EB71C9B65FE00705954 /* JSLocalNetworkDevices.cpp */; };
+		1F5E6EC11C9B65FE00705954 /* JSLocalNetworkDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F5E6EB81C9B65FE00705954 /* JSLocalNetworkDevices.h */; };
+		1F5E6EC41C9B65FE00705954 /* JSRemoteApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F5E6EBB1C9B65FE00705954 /* JSRemoteApplication.h */; };
+		1F68C3601CC0F87C00FAE38F /* LocalNetworkDiscovererClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F68C35F1CC0F87C00FAE38F /* LocalNetworkDiscovererClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F68C3631CC0FA2600FAE38F /* LocalNetworkDiscoveryController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F68C3611CC0FA2600FAE38F /* LocalNetworkDiscoveryController.cpp */; };
+		1F68C3641CC0FA2600FAE38F /* LocalNetworkDiscoveryController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F68C3621CC0FA2600FAE38F /* LocalNetworkDiscoveryController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F69D4A01D78B7EF00BA419C /* DiscoveryServiceChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F69D49C1D78B64B00BA419C /* DiscoveryServiceChannel.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F69D4A51D78BCB300BA419C /* LocalNetworkLaunchingProviderCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F69D4A31D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.h */; };
+		1F69D4A61D78BCD000BA419C /* LocalNetworkLaunchingProviderCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F69D4A41D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.mm */; };
+		1F69D4A71D78BCD900BA419C /* LocalNetworkDiscoveryProviderCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F69D4A21D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.mm */; };
+		1F69D4A81D78BCDE00BA419C /* LocalNetworkDiscoveryProviderCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F69D4A11D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.h */; };
+		1F6ECDB41DAA38F400E126BD /* JSStateChangedEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F6ECDB31DAA38A200E126BD /* JSStateChangedEvent.cpp */; };
+		1F6ECDB51DAA38F800E126BD /* JSStateChangedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6ECDB21DAA38A200E126BD /* JSStateChangedEvent.h */; };
+		1F7290041C98A7910086C56A /* LocalNetworkDevices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F7290021C98A7910086C56A /* LocalNetworkDevices.cpp */; };
+		1F7290051C98A7910086C56A /* LocalNetworkDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7290031C98A7910086C56A /* LocalNetworkDevices.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F7290081C98AD350086C56A /* NavigatorLocalNetworkDevices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F7290061C98AD350086C56A /* NavigatorLocalNetworkDevices.cpp */; };
+		1F7290091C98AD350086C56A /* NavigatorLocalNetworkDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7290071C98AD350086C56A /* NavigatorLocalNetworkDevices.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F72900C1C98AFF70086C56A /* RemoteApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F72900A1C98AFF70086C56A /* RemoteApplication.cpp */; };
+		1F72900D1C98AFF70086C56A /* RemoteApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F72900B1C98AFF70086C56A /* RemoteApplication.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1F72BF0A187FD4490009BCB3 /* TileControllerMemoryHandlerIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F72BF08187FD4270009BCB3 /* TileControllerMemoryHandlerIOS.cpp */; };
 		1F72BF0B187FD45C0009BCB3 /* TileControllerMemoryHandlerIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F72BF09187FD4270009BCB3 /* TileControllerMemoryHandlerIOS.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F80B7F21C93431000E9E195 /* LocalNetworkDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F80B7F01C93431000E9E195 /* LocalNetworkDevice.cpp */; };
+		1F80B7F31C93431000E9E195 /* LocalNetworkDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F80B7F11C93431000E9E195 /* LocalNetworkDevice.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1F80B7F61C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F80B7F41C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.cpp */; };
+		1F80B7F71C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F80B7F51C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1F8756B21E22C3350042C40D /* WebSQLiteDatabaseTrackerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8756B11E22BEEF0042C40D /* WebSQLiteDatabaseTrackerClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FA4EC831DA7F6D200ACD4BD /* StateChangedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4EC811DA7E1AA00ACD4BD /* StateChangedEvent.h */; };
+		1FA4EC841DA7F6D500ACD4BD /* StateChangedEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4EC801DA7E1AA00ACD4BD /* StateChangedEvent.cpp */; };
 		1FAFBF1815A5FA6E00083A20 /* UTIUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FAFBF1715A5FA5200083A20 /* UTIUtilities.mm */; };
 		1FAFBF1915A5FA7400083A20 /* UTIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FAFBF1615A5FA5200083A20 /* UTIUtilities.h */; };
+		1FAFFDA61CCD39D7008459A6 /* LocalNetworkEnumerationRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FAFFDA41CCD39D7008459A6 /* LocalNetworkEnumerationRequest.cpp */; };
+		1FAFFDA71CCD39D7008459A6 /* LocalNetworkEnumerationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FAFFDA51CCD39D7008459A6 /* LocalNetworkEnumerationRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FB32AB01D4909F400F90576 /* WebDialMessages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB32AAE1D4909F400F90576 /* WebDialMessages.cpp */; };
+		1FB32AB11D4909F400F90576 /* WebDialMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB32AAF1D4909F400F90576 /* WebDialMessages.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FB706FA1CDCCEFC00E3B594 /* LocalNetworkLaunchingProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB706F81CDCCEFC00E3B594 /* LocalNetworkLaunchingProvider.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1FC40FB91655CCB60040F29E /* SubimageCacheWithTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC40FB81655C5910040F29E /* SubimageCacheWithTimer.cpp */; };
 		1FC40FBA1655CCB90040F29E /* SubimageCacheWithTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FC40FB71655C5910040F29E /* SubimageCacheWithTimer.h */; };
+		1FEAC8401D83132900C8C56E /* DiscoveryServiceChannelCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F69D4A91D78C2E100BA419C /* DiscoveryServiceChannelCocoa.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FEAC8411D83132D00C8C56E /* DiscoveryServiceChannelCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F69D4AB1D78C2E100BA419C /* DiscoveryServiceChannelCocoa.mm */; };
 		20D629261253690B00081543 /* InspectorInstrumentation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D629241253690B00081543 /* InspectorInstrumentation.cpp */; };
 		20D629271253690B00081543 /* InspectorInstrumentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D629251253690B00081543 /* InspectorInstrumentation.h */; };
 		225A16B50D5C11E900090295 /* WebEventRegion.h in Headers */ = {isa = PBXBuildFile; fileRef = 225A16B30D5C11E900090295 /* WebEventRegion.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -8580,16 +8619,61 @@
 		1CDD45E50BA9C84600F90147 /* WebCore.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = WebCore.xcconfig; sourceTree = "<group>"; };
 		1CDD45E60BA9C84600F90147 /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		1CFAE3220A6D6A3F0032593D /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = /usr/lib/libobjc.dylib; sourceTree = "<absolute>"; };
+		1F0FE1071F0EBEE20057D049 /* DiscoveryServiceChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscoveryServiceChannel.cpp; sourceTree = "<group>"; };
 		1F36EA9A1E21BA1700621E25 /* WebBackgroundTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBackgroundTaskController.h; sourceTree = "<group>"; };
 		1F36EA9B1E21BA1700621E25 /* WebBackgroundTaskController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebBackgroundTaskController.mm; sourceTree = "<group>"; };
+		1F37CF4D1CDA5227003B676B /* LocalNetworkDiscoveryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDiscoveryProvider.h; sourceTree = "<group>"; };
 		1F3C3BE8135CAF3C00B8C1AC /* MediaControls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaControls.cpp; sourceTree = "<group>"; };
 		1F3C3BE9135CAF3C00B8C1AC /* MediaControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaControls.h; sourceTree = "<group>"; };
+		1F5E6EB11C9B612400705954 /* JSRemoteApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSRemoteApplication.cpp; sourceTree = "<group>"; };
+		1F5E6EB31C9B65FE00705954 /* JSLocalNetworkDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSLocalNetworkDevice.cpp; sourceTree = "<group>"; };
+		1F5E6EB41C9B65FE00705954 /* JSLocalNetworkDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLocalNetworkDevice.h; sourceTree = "<group>"; };
+		1F5E6EB51C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSLocalNetworkDeviceDescriptor.cpp; sourceTree = "<group>"; };
+		1F5E6EB61C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLocalNetworkDeviceDescriptor.h; sourceTree = "<group>"; };
+		1F5E6EB71C9B65FE00705954 /* JSLocalNetworkDevices.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSLocalNetworkDevices.cpp; sourceTree = "<group>"; };
+		1F5E6EB81C9B65FE00705954 /* JSLocalNetworkDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLocalNetworkDevices.h; sourceTree = "<group>"; };
+		1F5E6EBB1C9B65FE00705954 /* JSRemoteApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRemoteApplication.h; sourceTree = "<group>"; };
+		1F68C35F1CC0F87C00FAE38F /* LocalNetworkDiscovererClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = LocalNetworkDiscovererClient.h; sourceTree = "<group>"; };
+		1F68C3611CC0FA2600FAE38F /* LocalNetworkDiscoveryController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalNetworkDiscoveryController.cpp; sourceTree = "<group>"; };
+		1F68C3621CC0FA2600FAE38F /* LocalNetworkDiscoveryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDiscoveryController.h; sourceTree = "<group>"; };
+		1F69D49C1D78B64B00BA419C /* DiscoveryServiceChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryServiceChannel.h; sourceTree = "<group>"; };
+		1F69D4A11D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDiscoveryProviderCocoa.h; sourceTree = "<group>"; };
+		1F69D4A21D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LocalNetworkDiscoveryProviderCocoa.mm; sourceTree = "<group>"; };
+		1F69D4A31D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkLaunchingProviderCocoa.h; sourceTree = "<group>"; };
+		1F69D4A41D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LocalNetworkLaunchingProviderCocoa.mm; sourceTree = "<group>"; };
+		1F69D4A91D78C2E100BA419C /* DiscoveryServiceChannelCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryServiceChannelCocoa.h; sourceTree = "<group>"; };
+		1F69D4AB1D78C2E100BA419C /* DiscoveryServiceChannelCocoa.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DiscoveryServiceChannelCocoa.mm; sourceTree = "<group>"; };
+		1F6ECDB21DAA38A200E126BD /* JSStateChangedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStateChangedEvent.h; sourceTree = "<group>"; };
+		1F6ECDB31DAA38A200E126BD /* JSStateChangedEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSStateChangedEvent.cpp; sourceTree = "<group>"; };
+		1F7290021C98A7910086C56A /* LocalNetworkDevices.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalNetworkDevices.cpp; sourceTree = "<group>"; };
+		1F7290031C98A7910086C56A /* LocalNetworkDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDevices.h; sourceTree = "<group>"; };
+		1F7290061C98AD350086C56A /* NavigatorLocalNetworkDevices.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NavigatorLocalNetworkDevices.cpp; sourceTree = "<group>"; };
+		1F7290071C98AD350086C56A /* NavigatorLocalNetworkDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigatorLocalNetworkDevices.h; sourceTree = "<group>"; };
+		1F72900A1C98AFF70086C56A /* RemoteApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoteApplication.cpp; sourceTree = "<group>"; };
+		1F72900B1C98AFF70086C56A /* RemoteApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteApplication.h; sourceTree = "<group>"; };
 		1F72BF08187FD4270009BCB3 /* TileControllerMemoryHandlerIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileControllerMemoryHandlerIOS.cpp; sourceTree = "<group>"; };
 		1F72BF09187FD4270009BCB3 /* TileControllerMemoryHandlerIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileControllerMemoryHandlerIOS.h; sourceTree = "<group>"; };
+		1F80B7EB1C93383300E9E195 /* LocalNetworkDevice.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LocalNetworkDevice.idl; sourceTree = "<group>"; };
+		1F80B7EC1C93383300E9E195 /* LocalNetworkDeviceDescriptor.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LocalNetworkDeviceDescriptor.idl; sourceTree = "<group>"; };
+		1F80B7ED1C93383300E9E195 /* LocalNetworkDevices.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LocalNetworkDevices.idl; sourceTree = "<group>"; };
+		1F80B7EE1C93383300E9E195 /* NavigatorLocalNetworkDevices.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NavigatorLocalNetworkDevices.idl; sourceTree = "<group>"; };
+		1F80B7EF1C93383300E9E195 /* RemoteApplication.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RemoteApplication.idl; sourceTree = "<group>"; };
+		1F80B7F01C93431000E9E195 /* LocalNetworkDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalNetworkDevice.cpp; sourceTree = "<group>"; };
+		1F80B7F11C93431000E9E195 /* LocalNetworkDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDevice.h; sourceTree = "<group>"; };
+		1F80B7F41C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalNetworkDeviceDescriptor.cpp; sourceTree = "<group>"; };
+		1F80B7F51C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkDeviceDescriptor.h; sourceTree = "<group>"; };
 		1F8756B01E22BEEF0042C40D /* WebSQLiteDatabaseTrackerClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebSQLiteDatabaseTrackerClient.mm; sourceTree = "<group>"; };
 		1F8756B11E22BEEF0042C40D /* WebSQLiteDatabaseTrackerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSQLiteDatabaseTrackerClient.h; sourceTree = "<group>"; };
+		1FA4EC801DA7E1AA00ACD4BD /* StateChangedEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateChangedEvent.cpp; sourceTree = "<group>"; };
+		1FA4EC811DA7E1AA00ACD4BD /* StateChangedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateChangedEvent.h; sourceTree = "<group>"; };
+		1FA4EC821DA7E1AA00ACD4BD /* StateChangedEvent.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StateChangedEvent.idl; sourceTree = "<group>"; };
 		1FAFBF1615A5FA5200083A20 /* UTIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTIUtilities.h; sourceTree = "<group>"; };
 		1FAFBF1715A5FA5200083A20 /* UTIUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UTIUtilities.mm; sourceTree = "<group>"; };
+		1FAFFDA41CCD39D7008459A6 /* LocalNetworkEnumerationRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalNetworkEnumerationRequest.cpp; sourceTree = "<group>"; };
+		1FAFFDA51CCD39D7008459A6 /* LocalNetworkEnumerationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkEnumerationRequest.h; sourceTree = "<group>"; };
+		1FB32AAE1D4909F400F90576 /* WebDialMessages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebDialMessages.cpp; sourceTree = "<group>"; };
+		1FB32AAF1D4909F400F90576 /* WebDialMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebDialMessages.h; sourceTree = "<group>"; };
+		1FB706F81CDCCEFC00E3B594 /* LocalNetworkLaunchingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNetworkLaunchingProvider.h; sourceTree = "<group>"; };
 		1FC40FB71655C5910040F29E /* SubimageCacheWithTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubimageCacheWithTimer.h; sourceTree = "<group>"; };
 		1FC40FB81655C5910040F29E /* SubimageCacheWithTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubimageCacheWithTimer.cpp; sourceTree = "<group>"; };
 		20D629241253690B00081543 /* InspectorInstrumentation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InspectorInstrumentation.cpp; sourceTree = "<group>"; };
@@ -16830,6 +16914,7 @@
 				E1C8BE4B0E8BD0D10064CB7D /* Threads */,
 				BC9854530CD3DA8F00069BC1 /* Traversal */,
 				FDA15E7B12B03E04003A583A /* WebAudio */,
+				1F5E6EB01C9B5DC800705954 /* WebDial */,
 				5DA5E0F9102B950400088CF9 /* WebSockets */,
 				BC9854430CD3D9D000069BC1 /* Window */,
 				A83B79220CCB00F0000B0825 /* XML */,
@@ -17379,6 +17464,59 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 			usesTabs = 0;
+		};
+		1F5E6EB01C9B5DC800705954 /* WebDial */ = {
+			isa = PBXGroup;
+			children = (
+				1F5E6EB31C9B65FE00705954 /* JSLocalNetworkDevice.cpp */,
+				1F5E6EB41C9B65FE00705954 /* JSLocalNetworkDevice.h */,
+				1F5E6EB51C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.cpp */,
+				1F5E6EB61C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.h */,
+				1F5E6EB71C9B65FE00705954 /* JSLocalNetworkDevices.cpp */,
+				1F5E6EB81C9B65FE00705954 /* JSLocalNetworkDevices.h */,
+				1F5E6EB11C9B612400705954 /* JSRemoteApplication.cpp */,
+				1F5E6EBB1C9B65FE00705954 /* JSRemoteApplication.h */,
+				1F6ECDB31DAA38A200E126BD /* JSStateChangedEvent.cpp */,
+				1F6ECDB21DAA38A200E126BD /* JSStateChangedEvent.h */,
+			);
+			name = WebDial;
+			sourceTree = "<group>";
+		};
+		1F80B7EA1C9337E800E9E195 /* webdial */ = {
+			isa = PBXGroup;
+			children = (
+				1F0FE1071F0EBEE20057D049 /* DiscoveryServiceChannel.cpp */,
+				1F69D49C1D78B64B00BA419C /* DiscoveryServiceChannel.h */,
+				1F80B7F01C93431000E9E195 /* LocalNetworkDevice.cpp */,
+				1F80B7F11C93431000E9E195 /* LocalNetworkDevice.h */,
+				1F80B7EB1C93383300E9E195 /* LocalNetworkDevice.idl */,
+				1F80B7F41C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.cpp */,
+				1F80B7F51C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.h */,
+				1F80B7EC1C93383300E9E195 /* LocalNetworkDeviceDescriptor.idl */,
+				1F7290021C98A7910086C56A /* LocalNetworkDevices.cpp */,
+				1F7290031C98A7910086C56A /* LocalNetworkDevices.h */,
+				1F80B7ED1C93383300E9E195 /* LocalNetworkDevices.idl */,
+				1F68C35F1CC0F87C00FAE38F /* LocalNetworkDiscovererClient.h */,
+				1F68C3611CC0FA2600FAE38F /* LocalNetworkDiscoveryController.cpp */,
+				1F68C3621CC0FA2600FAE38F /* LocalNetworkDiscoveryController.h */,
+				1F37CF4D1CDA5227003B676B /* LocalNetworkDiscoveryProvider.h */,
+				1FAFFDA41CCD39D7008459A6 /* LocalNetworkEnumerationRequest.cpp */,
+				1FAFFDA51CCD39D7008459A6 /* LocalNetworkEnumerationRequest.h */,
+				1FB706F81CDCCEFC00E3B594 /* LocalNetworkLaunchingProvider.h */,
+				1F7290061C98AD350086C56A /* NavigatorLocalNetworkDevices.cpp */,
+				1F7290071C98AD350086C56A /* NavigatorLocalNetworkDevices.h */,
+				1F80B7EE1C93383300E9E195 /* NavigatorLocalNetworkDevices.idl */,
+				1F72900A1C98AFF70086C56A /* RemoteApplication.cpp */,
+				1F72900B1C98AFF70086C56A /* RemoteApplication.h */,
+				1F80B7EF1C93383300E9E195 /* RemoteApplication.idl */,
+				1FA4EC801DA7E1AA00ACD4BD /* StateChangedEvent.cpp */,
+				1FA4EC811DA7E1AA00ACD4BD /* StateChangedEvent.h */,
+				1FA4EC821DA7E1AA00ACD4BD /* StateChangedEvent.idl */,
+				1FB32AAE1D4909F400F90576 /* WebDialMessages.cpp */,
+				1FB32AAF1D4909F400F90576 /* WebDialMessages.h */,
+			);
+			path = webdial;
+			sourceTree = "<group>";
 		};
 		26B9998D1803ADFA00D01121 /* cssjit */ = {
 			isa = PBXGroup;
@@ -20720,6 +20858,7 @@
 				41A023EA1A39DB7900F722CF /* streams */,
 				FD315FA212B025B100C1A359 /* webaudio */,
 				97BC69D51505F054001B74AC /* webdatabase */,
+				1F80B7EA1C9337E800E9E195 /* webdial */,
 				996E59DA1DF00D45006612B9 /* webdriver */,
 				97AABCF714FA09B5007457AE /* websockets */,
 			);
@@ -21260,11 +21399,17 @@
 				CD7D33461C7A16BF00041293 /* CoreVideoSoftLink.h */,
 				7C7941E31C56C29300A4C58E /* DataDetectorsCoreSoftLink.h */,
 				7C7941E21C56C29300A4C58E /* DataDetectorsCoreSoftLink.mm */,
+				1F69D4A91D78C2E100BA419C /* DiscoveryServiceChannelCocoa.h */,
+				1F69D4AB1D78C2E100BA419C /* DiscoveryServiceChannelCocoa.mm */,
 				7A09CEF01F01D1F700E93BDB /* FileMonitorCocoa.mm */,
 				514B3F750C722055000530DF /* FileSystemCocoa.mm */,
 				A5C974CF11485FF10066F2AB /* KeyEventCocoa.h */,
 				A5C974D011485FF10066F2AB /* KeyEventCocoa.mm */,
 				1A4832B21A953BA6008B4DFE /* LocalizedStringsCocoa.mm */,
+				1F69D4A11D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.h */,
+				1F69D4A21D78BCAB00BA419C /* LocalNetworkDiscoveryProviderCocoa.mm */,
+				1F69D4A31D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.h */,
+				1F69D4A41D78BCAB00BA419C /* LocalNetworkLaunchingProviderCocoa.mm */,
 				1A0409F21A43675C009E47F3 /* MachSendRight.cpp */,
 				1A0409DB1A4360B5009E47F3 /* MachSendRight.h */,
 				C53D39331C97892D007F3AE9 /* MIMETypeRegistryCocoa.mm */,
@@ -27192,6 +27337,8 @@
 				937FF3D51A1012D6008EBA31 /* DictionaryLookup.h in Headers */,
 				2D5646B01B8F8493003C4994 /* DictionaryPopupInfo.h in Headers */,
 				FDAF19991513D131008DB0C3 /* DirectConvolver.h in Headers */,
+				1F69D4A01D78B7EF00BA419C /* DiscoveryServiceChannel.h in Headers */,
+				1FEAC8401D83132900C8C56E /* DiscoveryServiceChannelCocoa.h in Headers */,
 				7EDAAFC919A2CCDC0034DFD1 /* DiskCacheMonitorCocoa.h in Headers */,
 				0FE5FBD31C3DD51E0007A2CA /* DisplayList.h in Headers */,
 				0FE5FBD51C3DD51E0007A2CA /* DisplayListItems.h in Headers */,
@@ -28191,6 +28338,9 @@
 				A86629D309DA2B48009633A5 /* JSKeyboardEvent.h in Headers */,
 				12A253E11C8FFF6600C22295 /* JSKeyframeEffect.h in Headers */,
 				935F45430F7C3B5F00D7C1FB /* JSLazyEventListener.h in Headers */,
+				1F5E6EBD1C9B65FE00705954 /* JSLocalNetworkDevice.h in Headers */,
+				1F5E6EBF1C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.h in Headers */,
+				1F5E6EC11C9B65FE00705954 /* JSLocalNetworkDevices.h in Headers */,
 				BCE1C43C0D9830D3003B02F2 /* JSLocation.h in Headers */,
 				93A806201E03B585008A1F26 /* JSLongRange.h in Headers */,
 				93D4379F1D57B15300AB85EA /* JSMainThreadExecState.h in Headers */,
@@ -28295,6 +28445,7 @@
 				7C4C96DF1AD4483500365A50 /* JSReadableStreamDefaultReader.h in Headers */,
 				4129DF861BB5B80C00322A16 /* JSReadableStreamPrivateConstructors.h in Headers */,
 				7E4C96DD1AD4483500365A51 /* JSReadableStreamSource.h in Headers */,
+				1F5E6EC41C9B65FE00705954 /* JSRemoteApplication.h in Headers */,
 				4998AECE13F9D6C90090B1AA /* JSRequestAnimationFrameCallback.h in Headers */,
 				57E233711DCD468F00F28D01 /* JSRsaHashedImportParams.h in Headers */,
 				5768E4341DB7524500D0A4F7 /* JSRsaHashedKeyGenParams.h in Headers */,
@@ -28344,6 +28495,7 @@
 				BC82432A0D0CE8A200460C8F /* JSSQLTransaction.h in Headers */,
 				B59DD69D11902A42007E9684 /* JSSQLTransactionCallback.h in Headers */,
 				B59DD6A111902A52007E9684 /* JSSQLTransactionErrorCallback.h in Headers */,
+				1F6ECDB51DAA38F800E126BD /* JSStateChangedEvent.h in Headers */,
 				A86629D309DA2B48009633A7 /* JSStaticRange.h in Headers */,
 				51E0BAEB0DA55D4A00A9E417 /* JSStorageEvent.h in Headers */,
 				89F60CDA15809D760075E157 /* JSStorageInfo.h in Headers */,
@@ -28674,6 +28826,16 @@
 				7633A72613D8B33A008501B6 /* LocaleToScriptMapping.h in Headers */,
 				A516E8B7136E04DB0076C3C0 /* LocalizedDateCache.h in Headers */,
 				935207BE09BD410A00F2038D /* LocalizedStrings.h in Headers */,
+				1F80B7F31C93431000E9E195 /* LocalNetworkDevice.h in Headers */,
+				1F80B7F71C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.h in Headers */,
+				1F7290051C98A7910086C56A /* LocalNetworkDevices.h in Headers */,
+				1F68C3601CC0F87C00FAE38F /* LocalNetworkDiscovererClient.h in Headers */,
+				1F68C3641CC0FA2600FAE38F /* LocalNetworkDiscoveryController.h in Headers */,
+				1F37CF4F1CDA5227003B676B /* LocalNetworkDiscoveryProvider.h in Headers */,
+				1F69D4A81D78BCDE00BA419C /* LocalNetworkDiscoveryProviderCocoa.h in Headers */,
+				1FAFFDA71CCD39D7008459A6 /* LocalNetworkEnumerationRequest.h in Headers */,
+				1FB706FA1CDCCEFC00E3B594 /* LocalNetworkLaunchingProvider.h in Headers */,
+				1F69D4A51D78BCB300BA419C /* LocalNetworkLaunchingProviderCocoa.h in Headers */,
 				BCE1C41B0D982980003B02F2 /* Location.h in Headers */,
 				A8239E0109B3CF8A00B60641 /* Logging.h in Headers */,
 				9BA273F4172206BB0097CE47 /* LogicalSelectionOffsetCaches.h in Headers */,
@@ -28864,6 +29026,7 @@
 				E12719C70EEEC16800F61213 /* NavigatorBase.h in Headers */,
 				77D510201ED72D5F00DA4C87 /* NavigatorCredentials.h in Headers */,
 				9711460414EF009A00674FD9 /* NavigatorGeolocation.h in Headers */,
+				1F7290091C98AD350086C56A /* NavigatorLocalNetworkDevices.h in Headers */,
 				5EA725D61ACABD5700EAD17B /* NavigatorMediaDevices.h in Headers */,
 				996E59DF1DF0128D006612B9 /* NavigatorWebDriver.h in Headers */,
 				A19D93461A9FEC7200B46C24 /* NEFilterSourceSPI.h in Headers */,
@@ -29161,6 +29324,7 @@
 				26B9998F1803AE7200D01121 /* RegisterAllocator.h in Headers */,
 				85031B4C0A44EFC700F992E0 /* RegisteredEventListener.h in Headers */,
 				A578F43F1DE0B630003DFC6A /* RejectedPromiseTracker.h in Headers */,
+				1F72900D1C98AFF70086C56A /* RemoteApplication.h in Headers */,
 				CDFC360618CA61C20026E56F /* RemoteCommandListener.h in Headers */,
 				CD8ACA891D237AA200ECC59E /* RemoteCommandListenerMac.h in Headers */,
 				D06C0D8F0CFD11460065F43F /* RemoveFormatCommand.h in Headers */,
@@ -29594,6 +29758,7 @@
 				1A2E6E5A0CC55213004A2062 /* SQLValue.h in Headers */,
 				93F1996308245E59001E9ABC /* SSLKeyGenerator.h in Headers */,
 				26B999911803B3C900D01121 /* StackAllocator.h in Headers */,
+				1FA4EC831DA7F6D200ACD4BD /* StateChangedEvent.h in Headers */,
 				BC7FA62D0D1F0EFF00DB22A9 /* StaticNodeList.h in Headers */,
 				F433E9031DBBDBA200EF0D14 /* StaticPasteboard.h in Headers */,
 				F44EBBD91DB5D21400277334 /* StaticRange.h in Headers */,
@@ -30167,6 +30332,7 @@
 				44A20DB90F84166C00B3E1FE /* WebCoreURLResponseIOS.h in Headers */,
 				93F199F008245E59001E9ABC /* WebCoreView.h in Headers */,
 				A5E616741894581F009ADF50 /* WebDebuggerAgent.h in Headers */,
+				1FB32AB11D4909F400F90576 /* WebDialMessages.h in Headers */,
 				FE0D84E910484348001A179E /* WebEvent.h in Headers */,
 				225A16B50D5C11E900090295 /* WebEventRegion.h in Headers */,
 				A19D93471A9FEC7200B46C24 /* WebFilterEvaluatorSPI.h in Headers */,
@@ -31233,6 +31399,8 @@
 				D0BD4F5C1408850F006839B6 /* DictationCommandIOS.cpp in Sources */,
 				937FF3D71A10131B008EBA31 /* DictionaryLookup.mm in Sources */,
 				FDAF19981513D131008DB0C3 /* DirectConvolver.cpp in Sources */,
+				1F0FE1081F0EBEE20057D049 /* DiscoveryServiceChannel.cpp in Sources */,
+				1FEAC8411D83132D00C8C56E /* DiscoveryServiceChannelCocoa.mm in Sources */,
 				7E4DE10D198B10B60051CB02 /* DiskCacheMonitorCocoa.mm in Sources */,
 				0FE5FBD21C3DD51E0007A2CA /* DisplayList.cpp in Sources */,
 				0FE5FBD41C3DD51E0007A2CA /* DisplayListItems.cpp in Sources */,
@@ -32195,6 +32363,9 @@
 				A86629D409DA2B48009633A5 /* JSKeyboardEvent.cpp in Sources */,
 				12A253E01C8FFF6600C22295 /* JSKeyframeEffect.cpp in Sources */,
 				935F45420F7C3B5F00D7C1FB /* JSLazyEventListener.cpp in Sources */,
+				1F5E6EBC1C9B65FE00705954 /* JSLocalNetworkDevice.cpp in Sources */,
+				1F5E6EBE1C9B65FE00705954 /* JSLocalNetworkDeviceDescriptor.cpp in Sources */,
+				1F5E6EC01C9B65FE00705954 /* JSLocalNetworkDevices.cpp in Sources */,
 				BCE1C43B0D9830D3003B02F2 /* JSLocation.cpp in Sources */,
 				BCE1C4400D9830F4003B02F2 /* JSLocationCustom.cpp in Sources */,
 				93A8061F1E03B585008A1F26 /* JSLongRange.cpp in Sources */,
@@ -32311,6 +32482,7 @@
 				4129DF851BB5B80700322A16 /* JSReadableStreamPrivateConstructors.cpp in Sources */,
 				7E4C96DC1AD4483500365A51 /* JSReadableStreamSource.cpp in Sources */,
 				418C39601C8F0AAE0051C8A3 /* JSReadableStreamSourceCustom.cpp in Sources */,
+				1F5E6EB21C9B64CC00705954 /* JSRemoteApplication.cpp in Sources */,
 				4998AECD13F9D6C90090B1AA /* JSRequestAnimationFrameCallback.cpp in Sources */,
 				57E233731DCD46B600F28D01 /* JSRsaHashedImportParams.cpp in Sources */,
 				5768E4361DB7527400D0A4F7 /* JSRsaHashedKeyGenParams.cpp in Sources */,
@@ -32365,6 +32537,7 @@
 				514C76380CE9225E007EF3CD /* JSSQLTransaction.cpp in Sources */,
 				B59DD69E11902A42007E9684 /* JSSQLTransactionCallback.cpp in Sources */,
 				B59DD6A211902A52007E9684 /* JSSQLTransactionErrorCallback.cpp in Sources */,
+				1F6ECDB41DAA38F400E126BD /* JSStateChangedEvent.cpp in Sources */,
 				A86629D409DA2B48009633A7 /* JSStaticRange.cpp in Sources */,
 				51E3F9D60DA05E1D00250911 /* JSStorage.cpp in Sources */,
 				51D0C5160DAA90B7003B3831 /* JSStorageCustom.cpp in Sources */,
@@ -32720,6 +32893,13 @@
 				A516E8B8136E04DB0076C3C0 /* LocalizedDateCache.mm in Sources */,
 				C046E1AC1208A9FE00BA2CF7 /* LocalizedStrings.cpp in Sources */,
 				1A4832B31A953BA6008B4DFE /* LocalizedStringsCocoa.mm in Sources */,
+				1F80B7F21C93431000E9E195 /* LocalNetworkDevice.cpp in Sources */,
+				1F80B7F61C934B9B00E9E195 /* LocalNetworkDeviceDescriptor.cpp in Sources */,
+				1F7290041C98A7910086C56A /* LocalNetworkDevices.cpp in Sources */,
+				1F68C3631CC0FA2600FAE38F /* LocalNetworkDiscoveryController.cpp in Sources */,
+				1F69D4A71D78BCD900BA419C /* LocalNetworkDiscoveryProviderCocoa.mm in Sources */,
+				1FAFFDA61CCD39D7008459A6 /* LocalNetworkEnumerationRequest.cpp in Sources */,
+				1F69D4A61D78BCD000BA419C /* LocalNetworkLaunchingProviderCocoa.mm in Sources */,
 				BCE1C41C0D982981003B02F2 /* Location.cpp in Sources */,
 				A8239E0009B3CF8A00B60641 /* Logging.cpp in Sources */,
 				1402645E0AFDC19B005919E2 /* LoggingMac.mm in Sources */,
@@ -32885,6 +33065,7 @@
 				2D9BF7421DBFDC27007A7D99 /* NavigatorEME.cpp in Sources */,
 				51A4BB101954D62700FA5C2E /* NavigatorGamepad.cpp in Sources */,
 				9711460314EF009A00674FD9 /* NavigatorGeolocation.cpp in Sources */,
+				1F7290081C98AD350086C56A /* NavigatorLocalNetworkDevices.cpp in Sources */,
 				5EA725D51ACABD5700EAD17B /* NavigatorMediaDevices.cpp in Sources */,
 				996E59DE1DF01285006612B9 /* NavigatorWebDriver.cpp in Sources */,
 				5D874F130D161D3200796C3B /* NetscapePlugInStreamLoader.cpp in Sources */,
@@ -33079,6 +33260,7 @@
 				FD45A95A175D417100C21EC8 /* RectangleShape.cpp in Sources */,
 				BCAB418113E356E800D8AAF3 /* Region.cpp in Sources */,
 				A578F4401DE0B634003DFC6A /* RejectedPromiseTracker.cpp in Sources */,
+				1F72900C1C98AFF70086C56A /* RemoteApplication.cpp in Sources */,
 				CDFC360518CA61C20026E56F /* RemoteCommandListener.cpp in Sources */,
 				CDFC360718CA696C0026E56F /* RemoteCommandListenerIOS.mm in Sources */,
 				CD8ACA881D237AA200ECC59E /* RemoteCommandListenerMac.mm in Sources */,
@@ -33444,6 +33626,7 @@
 				FE36FD1616C7826500F887C1 /* SQLTransactionStateMachine.cpp in Sources */,
 				4476531B133170990006B789 /* SSLKeyGeneratorIOS.cpp in Sources */,
 				93F19AE608245E59001E9ABC /* SSLKeyGeneratorMac.mm in Sources */,
+				1FA4EC841DA7F6D500ACD4BD /* StateChangedEvent.cpp in Sources */,
 				BC7FA62E0D1F0EFF00DB22A9 /* StaticNodeList.cpp in Sources */,
 				F433E9051DBBDFCA00EF0D14 /* StaticPasteboard.cpp in Sources */,
 				F44EBBDB1DB5DD9D00277334 /* StaticRange.cpp in Sources */,
@@ -33883,6 +34066,7 @@
 				444D4E230F708B2E003158E0 /* WebCoreURLResponseIOS.mm in Sources */,
 				93F19B0708245E59001E9ABC /* WebCoreView.m in Sources */,
 				A5E616731894581F009ADF50 /* WebDebuggerAgent.cpp in Sources */,
+				1FB32AB01D4909F400F90576 /* WebDialMessages.cpp in Sources */,
 				FE0D84EB1048436E001A179E /* WebEvent.mm in Sources */,
 				225A16B60D5C11E900090295 /* WebEventRegion.mm in Sources */,
 				D3F3D36D1A69B7DC0059FC2B /* WebGL2RenderingContext.cpp in Sources */,

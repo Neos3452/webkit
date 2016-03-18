@@ -168,6 +168,10 @@ the public iOS SDK. We will also need to update the FeatureDefines.xcconfig file
 #define ENABLE_DOWNLOAD_ATTRIBUTE 0
 #endif
 
+#if !defined(ENABLE_WEB_DIAL)
+#define ENABLE_WEB_DIAL 1
+#endif
+
 #endif /* PLATFORM(IOS) */
 
 /* --------- Apple MAC port (not IOS) --------- */
@@ -221,6 +225,10 @@ the public iOS SDK. We will also need to update the FeatureDefines.xcconfig file
 
 #if !defined(ENABLE_WEB_AUDIO)
 #define ENABLE_WEB_AUDIO 1
+#endif
+
+#if !defined(ENABLE_WEB_DIAL)
+#define ENABLE_WEB_DIAL 1
 #endif
 
 #if !defined(ENABLE_CURSOR_VISIBILITY)
@@ -714,6 +722,10 @@ the public iOS SDK. We will also need to update the FeatureDefines.xcconfig file
 
 #if !defined(ENABLE_WEB_AUDIO)
 #define ENABLE_WEB_AUDIO 0
+#endif
+
+#if !defined(ENABLE_WEB_DIAL)
+#define ENABLE_WEB_DIAL 0
 #endif
 
 #if !defined(ENABLE_WEB_REPLAY)

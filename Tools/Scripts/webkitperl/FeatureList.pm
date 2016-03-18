@@ -135,6 +135,7 @@ my (
     $webAssemblySupport,
     $webAudioSupport,
     $webRTCSupport,
+    $webDialSupport,
     $webReplaySupport,
     $webSocketsSupport,
     $webTimingSupport,
@@ -385,6 +386,9 @@ my @features = (
 
     { option => "web-audio", desc => "Toggle Web Audio support",
       define => "ENABLE_WEB_AUDIO", default => (isGtk() || isWPE()), value => \$webAudioSupport },
+
+    { option => "web-dial", desc => "Toggle Web Discovery and Launch support",
+      define => "ENABLE_WEB_DIAL", default => (isAppleCocoaWebKit() || isIOSWebKit()), value => \$webDialSupport },
 
     { option => "web-replay", desc => "Toggle Web Replay support",
       define => "ENABLE_WEB_REPLAY", default => isAppleCocoaWebKit(), value => \$webReplaySupport },

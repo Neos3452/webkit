@@ -29,6 +29,8 @@
 
 #import "AppDelegate.h"
 #import "SettingsController.h"
+#import <WebKit/WKDiscoveryService.h>
+#import <WebKit/WKDiscoveryDelegate.h>
 #import <WebKit/WKFrameInfo.h>
 #import <WebKit/WKNavigationActionPrivate.h>
 #import <WebKit/WKNavigationDelegate.h>
@@ -47,12 +49,13 @@ static void* keyValueObservingContext = &keyValueObservingContext;
 static const int testHeaderBannerHeight = 42;
 static const int testFooterBannerHeight = 58;
 
-@interface WK2BrowserWindowController () <NSTextFinderBarContainer, WKNavigationDelegate, WKUIDelegate, _WKIconLoadingDelegate>
+@interface WK2BrowserWindowController () <NSTextFinderBarContainer, WKNavigationDelegate, WKUIDelegate, _WKIconLoadingDelegate, WKDiscoveryDelegate>
 @end
 
 @implementation WK2BrowserWindowController {
     WKWebViewConfiguration *_configuration;
     WKWebView *_webView;
+    WKDiscoveryService *_service;
     BOOL _zoomTextOnly;
     BOOL _isPrivateBrowsingWindow;
 
@@ -109,6 +112,10 @@ static const int testFooterBannerHeight = 58;
     if (!(self = [super initWithWindowNibName:@"BrowserWindow"]))
         return nil;
 
+    _service = [[WKDiscoveryService alloc] init];
+    _service.discoveryDelegate = self;
+    [_service start];
+
     _configuration = [configuration copy];
     _isPrivateBrowsingWindow = !_configuration.websiteDataStore.isPersistent;
 
@@ -127,6 +134,7 @@ static const int testFooterBannerHeight = 58;
 
     [_webView release];
     [_configuration release];
+    [_service release];
 
     [super dealloc];
 }
@@ -761,6 +769,14 @@ static NSSet *dataTypes()
 
 - (void)findBarViewDidChangeHeight
 {
+}
+
+- (nullable WKWebView *)discoveryService:(WKDiscoveryService *)service launchWebViewforNavigationAction:(WKNavigationAction *)navigationAction
+{
+    WK2BrowserWindowController *newBrowserWindowController = [[WK2BrowserWindowController alloc] initWithConfiguration:_configuration];
+    [newBrowserWindowController.window makeKeyAndOrderFront:self];
+
+    return newBrowserWindowController->_webView;
 }
 
 @end

@@ -161,7 +161,7 @@ CachedResource* CachedResourceLoader::cachedResource(const String& resourceURL) 
 
 CachedResource* CachedResourceLoader::cachedResource(const URL& url) const
 {
-    ASSERT(!MemoryCache::shouldRemoveFragmentIdentifier(url));
+//    ASSERT(!MemoryCache::shouldRemoveFragmentIdentifier(url));
     return m_documentResources.get(url).get();
 }
 

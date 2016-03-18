@@ -1,0 +1,16 @@
+Is WebDial present on navigator
+
+On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
+
+
+PASS [object LocalNetworkDevices] is defined.
+PASS function getRemoteInvoker() {
+    [native code]
+} is defined.
+PASS function enumerateDevices() {
+    [native code]
+} is defined.
+PASS successfullyParsed is true
+
+TEST COMPLETE
+

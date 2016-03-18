@@ -95,6 +95,8 @@
 		1C68F672095B5FC100C2984E /* WebNodeHighlightView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C68F666095B5FC100C2984E /* WebNodeHighlightView.mm */; };
 		1C7B0C660EB2464D00A28502 /* WebInspectorClientCF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B0C650EB2464D00A28502 /* WebInspectorClientCF.cpp */; };
 		1C8CB07A0AE9830C00B1F6E9 /* WebEditingDelegatePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C8CB0790AE9830C00B1F6E9 /* WebEditingDelegatePrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FB706F41CDCC97F00E3B594 /* WebLocalNetworkDiscovererClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FB706F31CDCC97F00E3B594 /* WebLocalNetworkDiscovererClient.mm */; };
+		1FB706F61CDCC9BE00E3B594 /* WebLocalNetworkDiscovererClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB706F51CDCC9BE00E3B594 /* WebLocalNetworkDiscovererClient.h */; };
 		22F219CC08D236730030E078 /* WebBackForwardListPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 22F219CB08D236730030E078 /* WebBackForwardListPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		29AEF960134C76FB00FE5096 /* OutlookQuirksUserScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 29AEF95D134C755400FE5096 /* OutlookQuirksUserScript.js */; };
 		2D25396618CE85C200270222 /* WebSharingServicePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D25396418CE85C200270222 /* WebSharingServicePickerController.h */; };
@@ -896,6 +898,8 @@
 		1C904FD30BA9DD0F0081E9D0 /* Version.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		1C904FD40BA9DD0F0081E9D0 /* DebugRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugRelease.xcconfig; sourceTree = "<group>"; };
 		1C904FD50BA9DD0F0081E9D0 /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		1FB706F31CDCC97F00E3B594 /* WebLocalNetworkDiscovererClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLocalNetworkDiscovererClient.mm; sourceTree = "<group>"; };
+		1FB706F51CDCC9BE00E3B594 /* WebLocalNetworkDiscovererClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLocalNetworkDiscovererClient.h; sourceTree = "<group>"; };
 		22F219CB08D236730030E078 /* WebBackForwardListPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WebBackForwardListPrivate.h; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		2568C72C0174912D0ECA149E /* WebKit.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WebKit.h; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; };
 		29AEF95D134C755400FE5096 /* OutlookQuirksUserScript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = OutlookQuirksUserScript.js; sourceTree = "<group>"; };
@@ -2603,6 +2607,8 @@
 				9345D4EB0365C5B2008635CE /* WebJavaScriptTextInputPanel.m */,
 				CD8BFCE615531224005AFB25 /* WebKitFullScreenListener.h */,
 				CD8BFCE515531224005AFB25 /* WebKitFullScreenListener.mm */,
+				1FB706F51CDCC9BE00E3B594 /* WebLocalNetworkDiscovererClient.h */,
+				1FB706F31CDCC97F00E3B594 /* WebLocalNetworkDiscovererClient.mm */,
 				31C11A6C1476552E0049A4CC /* WebNotificationClient.h */,
 				31C11A6D1476552E0049A4CC /* WebNotificationClient.mm */,
 				A58A5797143E727000125F50 /* WebOpenPanelResultListener.h */,
@@ -3190,6 +3196,7 @@
 				4618DFF81DEF760A0033C3AA /* WebValidationMessageClient.h in Headers */,
 				939810700824BF01008DF038 /* WebView.h in Headers */,
 				BC2E464D0FD8A96800A9D9DE /* WebViewData.h in Headers */,
+				1FB706F61CDCC9BE00E3B594 /* WebLocalNetworkDiscovererClient.h in Headers */,
 				1430C12D1B2C5DF700DEA01D /* WebViewGroup.h in Headers */,
 				9398109B0824BF01008DF038 /* WebViewInternal.h in Headers */,
 				939810710824BF01008DF038 /* WebViewPrivate.h in Headers */,
@@ -3686,6 +3693,7 @@
 				E4AEF97B1C0DF4BC00B01727 /* WebResourceLoadScheduler.cpp in Sources */,
 				7E6FEF0908985A7200C44C3F /* WebScriptDebugDelegate.mm in Sources */,
 				C0167BF90D7F5DD00028696E /* WebScriptDebugger.mm in Sources */,
+				1FB706F41CDCC97F00E3B594 /* WebLocalNetworkDiscovererClient.mm in Sources */,
 				C0B1F7E910AC8E3100C925D9 /* WebScriptWorld.mm in Sources */,
 				A5DEFC0A11D5331C00885273 /* WebSecurityOrigin.mm in Sources */,
 				A10C1D751820300E0036883A /* WebSelectionRect.m in Sources */,

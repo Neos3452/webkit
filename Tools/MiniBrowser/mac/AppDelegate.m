@@ -26,6 +26,7 @@
 #import "AppDelegate.h"
 
 #import "ExtensionManagerWindowController.h"
+#import "UserScriptsManagerWindowController.h"
 #import "SettingsController.h"
 #import "WK1BrowserWindowController.h"
 #import "WK2BrowserWindowController.h"
@@ -62,6 +63,7 @@ enum {
         _browserWindowControllers = [[NSMutableSet alloc] init];
 #if WK_API_ENABLED
         _extensionManagerWindowController = [[ExtensionManagerWindowController alloc] init];
+        _userScriptsManagerWindowController = [[UserScriptsManagerWindowController alloc] init];
 #endif
     }
 
@@ -74,6 +76,8 @@ enum {
     [item setSubmenu:[[SettingsController shared] menu]];
 
 #if WK_API_ENABLED
+    [_userScriptsManagerWindowController loadInstalledUserScripts];
+
     if ([[SettingsController shared] usesGameControllerFramework])
         [WKProcessPool _forceGameControllerFramework];
 #endif
@@ -112,6 +116,7 @@ static WKWebViewConfiguration *defaultConfiguration()
 
     configuration.suppressesIncrementalRendering = [SettingsController shared].incrementalRenderingSuppressed;
     configuration.websiteDataStore._resourceLoadStatisticsEnabled = [SettingsController shared].resourceLoadStatisticsEnabled;
+    NSLog(@"Returning %p", configuration);
     return configuration;
 }
 
@@ -297,6 +302,13 @@ WKPreferences *defaultPreferences()
 {
 #if WK_API_ENABLED
     [_extensionManagerWindowController showWindow:sender];
+#endif
+}
+
+- (IBAction)showUserScriptsManager:(id)sender
+{
+#if WK_API_ENABLED
+    [_userScriptsManagerWindowController showWindow:sender];
 #endif
 }
 

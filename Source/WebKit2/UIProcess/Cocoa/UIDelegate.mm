@@ -28,6 +28,8 @@
 
 #if WK_API_ENABLED
 
+#include "Logging.h"
+
 #import "APIFrameInfo.h"
 #import "CompletionHandlerCallChecker.h"
 #import "NavigationActionData.h"
@@ -744,6 +746,26 @@ void UIDelegate::UIClient::imageOrMediaDocumentSizeChanged(const WebCore::IntSiz
         return;
 
     [static_cast<id <WKUIDelegatePrivate>>(delegate) _webView:m_uiDelegate.m_webView imageOrMediaDocumentSizeChanged:newSize];
+}
+
+bool UIDelegate::UIClient::decidePolicyForLocalNetworkDiscoveryPermissionRequest(WebPageProxy&, WebFrameProxy&, API::SecurityOrigin&, LocalNetworkDiscoveryPermissionRequestProxy& request)
+{
+//    if (!m_uiDelegate.m_delegateMethods.webViewDecidePolicyForLocalNetworkDiscoveryPermissionRequest)
+//        return;
+//
+//    auto delegate = m_uiDelegate.m_delegate.get();
+//    if (!delegate)
+//        return;
+
+//    // FIXME: pass all things to the handler
+//    if ([static_cast<id <WKUIDelegatePrivate>>(delegate) _webView:m_uiDelegate.m_webView webViewDecidePolicyForLocalNetworkDiscoveryPermissionRequest]) {
+//        request.allow();
+//    } else {
+//        request.deny();
+//    }
+    LOG(WebDial, "UIDelegate::UIClient::decidePolicyForLocalNetworkDiscoveryPermissionRequest() granting permission");
+    request.allow();
+    return true;
 }
 
 } // namespace WebKit

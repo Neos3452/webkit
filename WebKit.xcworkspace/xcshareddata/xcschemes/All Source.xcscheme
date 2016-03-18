@@ -149,6 +149,20 @@
                ReferencedContainer = "container:Source/WebKit2/WebKit2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD1DAF911D709E3600017CF0"
+               BuildableName = "MobileMiniBrowser.app"
+               BlueprintName = "MobileMiniBrowser"
+               ReferencedContainer = "container:Tools/MobileMiniBrowser/MobileMiniBrowser.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -161,10 +175,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "MiniBrowser.app"
-            BlueprintName = "MiniBrowser"
-            ReferencedContainer = "container:Tools/MiniBrowser/MiniBrowser.xcodeproj">
+            BlueprintIdentifier = "CD1DAF911D709E3600017CF0"
+            BuildableName = "MobileMiniBrowser.app"
+            BlueprintName = "MobileMiniBrowser"
+            ReferencedContainer = "container:Tools/MobileMiniBrowser/MobileMiniBrowser.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -184,10 +198,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "MiniBrowser.app"
-            BlueprintName = "MiniBrowser"
-            ReferencedContainer = "container:Tools/MiniBrowser/MiniBrowser.xcodeproj">
+            BlueprintIdentifier = "CD1DAF911D709E3600017CF0"
+            BuildableName = "MobileMiniBrowser.app"
+            BlueprintName = "MobileMiniBrowser"
+            ReferencedContainer = "container:Tools/MobileMiniBrowser/MobileMiniBrowser.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

@@ -71,3 +71,4 @@ GamepadEvent conditional=GAMEPAD
 OverconstrainedErrorEvent conditional=MEDIA_STREAM
 MediaEncryptedEvent conditional=ENCRYPTED_MEDIA
 MediaKeyMessageEvent conditional=ENCRYPTED_MEDIA
+StateChangedEvent conditional=WEB_DIAL

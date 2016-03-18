@@ -71,6 +71,7 @@ extern "C" {
     M(ViewState) \
     M(VirtualMemory) \
     M(VisibleRects) \
+    M(WebDial) \
     M(WebRTC) \
 
 WEBKIT2_LOG_CHANNELS(DECLARE_LOG_CHANNEL)

@@ -25,6 +25,7 @@ MessagePort
 Node
 Notification conditional=NOTIFICATIONS
 Performance conditional=WEB_TIMING
+RemoteApplication conditional=WEB_DIAL
 RTCDataChannel conditional=WEB_RTC
 RTCDTMFSender conditional=WEB_RTC_DTMF
 RTCPeerConnection conditional=WEB_RTC

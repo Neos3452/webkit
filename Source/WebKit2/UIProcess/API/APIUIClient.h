@@ -133,6 +133,7 @@ public:
     virtual bool decidePolicyForUserMediaPermissionRequest(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, WebKit::UserMediaPermissionRequestProxy&) { return false; }
     virtual bool checkUserMediaPermissionForOrigin(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, WebKit::UserMediaPermissionCheckProxy&) { return false; }
     virtual bool decidePolicyForNotificationPermissionRequest(WebKit::WebPageProxy*, SecurityOrigin*, WebKit::NotificationPermissionRequest*) { return false; }
+    virtual bool decidePolicyForLocalNetworkDiscoveryPermissionRequest(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, SecurityOrigin&, WebKit::LocalNetworkDiscoveryPermissionRequestProxy&) { return false; }
 
     // Printing.
     virtual float headerHeight(WebKit::WebPageProxy*, WebKit::WebFrameProxy*) { return 0; }

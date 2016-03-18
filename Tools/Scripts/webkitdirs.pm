@@ -2280,6 +2280,18 @@ sub installedMobileSafariBundle()
     return File::Spec->catfile(iosSimulatorApplicationsPath(), "MobileSafari.app");
 }
 
+sub mobileMiniBrowserBundle()
+{
+#determineConfigurationProductDir();
+
+    # Use MobileSafari.app in product directory if present.
+#if (isAppleCocoaWebKit() && -d "$configurationProductDir/MobileSafari.app") {
+#        return "$configurationProductDir/MobileSafari.app";
+#    }
+#    return installedMobileSafariBundle();
+    return File::Spec->catfile(productDir(), "MobileMiniBrowser.app");
+}
+
 sub mobileSafariBundle()
 {
     determineConfigurationProductDir();
@@ -2618,6 +2630,9 @@ sub runSafari
 
 sub runMiniBrowser
 {
+    if (isIOSWebKit()) {
+        return runIOSWebKitApp(mobileMiniBrowserBundle());
+    }
     if (isAppleCocoaWebKit()) {
         return runMacWebKitApp(File::Spec->catfile(productDir(), "MiniBrowser.app", "Contents", "MacOS", "MiniBrowser"));
     } elsif (isAppleWinWebKit()) {
