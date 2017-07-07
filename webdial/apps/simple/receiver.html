@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript" src="app_control.js"></script>
+    <script>
+    function main() {
+        var logger = document.getElementById('log');
+        var app = navigator.getRemoteInvoker();
+        if (app == null) {
+            logger.innerHTML+= '<br/>No Remote invoker :(';
+            return;
+        }
+
+        document.body.appendChild(new AppControl(app).container);
+    }
+    </script>
+</head>
+<body onLoad="main()">
+    <p id="log">Loaded!<br/></p>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript" src="app_control.js"></script>
+    <script>
+    function main() {
+        var devices = [];
+        var logger = document.getElementById('log');
+        var list = document.getElementById('devices-list');
+        if (!navigator.localNetworkDevices) {
+            logger.innerHTML += '<br/>';
+            logger.textContent += 'No WebDIAL';
+        }
+
+        navigator.localNetworkDevices.enumerateDevices()
+            .then(function(vec) { 
+                console.log(vec);
+                logger.innerHTML += '<br/>';
+                logger.textContent += 'Success: (' + vec.length + ') [';
+                for (var i = 0; i < vec.length; ++i) {
+                    logger.textContent += vec[i].descriptor.userAgent + ', ';
+                    var option = document.createElement('option');
+                    option.textContent = vec[i].descriptor.userAgent;
+                    list.appendChild(option);
+                }
+                logger.textContent += ']';
+                devices = vec;
+            }).catch(function(err) {
+                console.log(err);
+                logger.textContent += 'Error: ' + err;
+            });
+        window.launch = function() {
+            var launchUrl = document.getElementById('pageUrl').value;
+            logger.innerHTML += '<br/>';
+            logger.textContent += 'Launching: ' + launchUrl;
+            devices[list.selectedIndex].launch(launchUrl).then(function(app) {
+                    logger.innerHTML += '<br/>';
+                    logger.textContent += 'Launched!';
+                    document.body.appendChild(new AppControl(app).container);
+                }).catch(function(err) {
+                    logger.innerHTML += '<br/>';
+                    logger.textContent += 'Error: ' + err;
+                });
+        }
+    }
+    </script>
+</head>
+<body onLoad="main()">
+    <button onclick="launch()" ontouch="launch()">Launch!</button><select id="devices-list"></select><br/>
+    URL: <input id="pageUrl" type="url" value="file:///Users/michaldebski/Documents/Projects/web/webdial/receiver.html" ><br/>
+    <p id="log">Started!</p>
+</body>
+</html>
+

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Web-enabled Discovery and Launch</title>
+    <script
+     src='https://www.w3.org/Tools/respec/respec-w3c-common'
+     class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+        specStatus: "ED",
+        editors: [{
+          name: "Michał Dębski",
+        }],
+        processVersion: 2015,
+        edDraftURI: "",
+        shortName: "WebDIAL"
+      };
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This specification provides new interfaces to allow JavaScript to probe local network for compatible devices and launch a web page. Both applications should then be able to communicate securely.
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
+        This document is a draft, prepared with accorandce to W3C recommendation but in no way affiliated with the consortium or any of the working groups.
+      </p>
+    </section>
+    <section id="conformance">
+      <p>
+        Requirements phrased in the imperative as part of algorithms (such as
+        "strip any leading space characters" or "return false and terminate
+        these steps") are to be interpreted with the meaning of the key word
+        ("MUST", "SHOULD", "MAY", etc.) used in introducing the algorithm.
+      </p>
+      <p>
+        Conformance requirements phrased as algorithms or specific steps may be
+        implemented in any manner, so long as the result is equivalent. (In
+        particular, the algorithms defined in this specification are intended
+        to be easy to follow, and not intended to be performant.)
+      </p>
+    </section>
+    <section id="introduction" class="informative">
+      <h2>Introduction</h2>
+      <section id="goals">
+          <h3>Goals</h3>
+          <p>
+          This specification was designed with the following goals:
+          </p>
+          <ul>
+              <li>Allow JavaScript to detect local network devices</li>
+              <li>Allow JavaScript and a user to distinguish the devices</li>
+              <li>Allow JavaScript to launch webpage on a choosen device</li>
+              <li>Allow both applications to intercommunicate securely</li>
+              <li>Prevent JavaScript from detecting and launching on some devices without user's explicit consent</li>
+          </ul>
+      </section>
+      <section id="definitions">
+          <h3>Definitions</h3>
+      <p>
+        The following terms are defined in [[!HTML51]]:
+      </p>
+        <ul>
+        <li>
+          <dfn><a href="https://www.w3.org/TR/html51/browsers.html#allowed-to-show-a-popup">allowed to show a popup</a></dfn>
+        </li>
+        <li>
+          <dfn><a href="https://html.spec.whatwg.org/#triggered-by-user-activation">triggered by user activation</a></dfn>
+        </li>
+        <li>
+          <a href=
+          "https://www.w3.org/TR/html51/webappapis.html#events-event-handlers"><dfn>
+          <code>EventHandler</code></dfn></a>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/webappapis.html#event-handler">event
+          handler</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/webappapis.html#event-handler-event-type">
+          event handler event type</a></dfn>
+        </li>
+        <li>
+          <dfn data-lt="fire|fires"><a href=
+          "https://www.w3.org/TR/html51/infrastructure.html#fire">firing an
+          event</a></dfn>
+        </li>
+        <li>
+          <dfn data-lt="fire a simple event"><a href=
+          "https://www.w3.org/TR/html51/webappapis.html#firing-a-simple-event-named-e">
+          firing a simple event</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/infrastructure.html#in-parallel">in
+          parallel</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/browsers.html#navigated">navigate</a></dfn>
+        </li>
+        <li>
+          <a href=
+          "https://www.w3.org/TR/html51/webappapis.html#navigator-navigator"><dfn>
+          <code>Navigator</code></dfn></a>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/webappapis.html#queuing">queue a
+          task</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://www.w3.org/TR/html51/infrastructure.html#trusted">trusted
+          event</a></dfn>
+        </li>
+         <li>
+          <dfn data-lt="browsing context|browsing contexts"><a href=
+          "https://www.w3.org/TR/html51/browsers.html#browsing-context">browsing
+          context</a></dfn>
+        </li>
+      </ul>
+      <p>
+        The term <dfn><a href=
+        "https://tc39.github.io/ecma262/#sec-code-realms">JavaScript
+        realm</a></dfn> is defined in [[!ECMASCRIPT]].
+      </p>
+      <p>
+        The terms <a href=
+        "https://dom.spec.whatwg.org/#eventtarget"><dfn><code>EventTarget</code></dfn></a>,
+        <a href=
+        "https://dom.spec.whatwg.org/#event"><dfn><code>Event</code></dfn></a>,
+        <a href=
+        "https://dom.spec.whatwg.org/#dictdef-eventinit"><dfn><code>EventInit</code></dfn></a>
+        are defined in [[!DOM]].
+      </p>
+      <p>
+        The term <a href=
+        "https://www.w3.org/TR/webmessaging/#messageevent"><dfn><code>MessageEvent</code></dfn></a>
+        is defined in [[!WEBMESSAGING]].
+      </p>
+      <p>
+        This document provides interface definitions using the Web IDL standard
+        [[!WEBIDL-2]].
+      </p>
+      <p>
+        The terms <dfn><a href=
+        "https://heycam.github.io/webidl/#dfn-throw">throw</a></dfn>,
+        <dfn><a href=
+        "https://heycam.github.io/webidl/#idl-promise">Promise</a></dfn>,
+        <dfn><a href=
+        "https://heycam.github.io/webidl/#idl-ArrayBuffer">ArrayBuffer</a></dfn>,
+        <dfn><a href=
+        "https://heycam.github.io/webidl/#ArrayBufferView">ArrayBufferView</a></dfn>,
+        and the following exception names are defined in [[!WEBIDL-2]]:
+      </p>
+      <ul>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#invalidaccesserror"><dfn><code>InvalidAccessError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#notfounderror"><dfn><code>NotFoundError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#notsupportederror"><dfn><code>NotSupportedError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#operationerror"><dfn><code>OperationError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#securityerror"><dfn><code>SecurityError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#syntaxerror"><dfn><code>SyntaxError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#notallowederror"><dfn><code>NotAllowedError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#timeouterror"><dfn><code>TimeoutError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#invalidstateerror"><dfn><code>InvalidStateError</code></dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://heycam.github.io/webidl/#exceptiondef-typeerror"><dfn><code>TypeError</code></dfn></a>
+        </li>
+      </ul>
+      <p>
+        The term <dfn><a href="https://url.spec.whatwg.org/#url">URL</a></dfn>
+        is defined in the WHATWG URL standard [[!URL]].
+      </p>
+      <p>
+        The term <a href=
+        "http://dev.w3.org/2006/webapi/FileAPI/#blob"><dfn><code>Blob</code></dfn></a>
+        is defined in the File API specification [[!FILEAPI]].
+      </p>
+      <p>
+        The term <dfn><a href=
+        "https://w3c.github.io/webappsec-mixed-content/#categorize-settings-object">
+        prohibits mixed security contexts algorithm</a></dfn> is defined in
+        [[!MIXED-CONTENT]].
+      </p>
+      <p>
+        The term <dfn><a href=
+        "https://www.w3.org/TR/secure-contexts/#potentially-trustworthy-origin">
+        potentially trustworthy origin</a></dfn> is defined in
+        [[!SECURE-CONTEXTS]].
+      </p>
+      </section>
+    </section>
+    <section>
+        <h2>Navigator extension</h2>
+        <p>Extension of the <a>Navigator</a> interface allows the application to detect whether it was launched by another devices and access discovery interface.</p>
+        <pre class="idl">
+        partial interface Navigator {
+            [sameobject]
+            readonly attribute LocalNetworkDevices localNetworkDevices;
+            RemoteApplication? getRemoteInvoker();
+        };
+        </pre>
+        <section>
+            <h3>Attributes</h3>
+            <dl class="attributes" data-dfn-for="Navigator" data-link-for="Navigator">
+            <dt><code><dfn>localNetworkDevices</dfn></code></dt><dd>An object of type <a>LocalNetworkDevices</a> for performing device enumeration.</dd>
+            </dl>
+        </section>
+        <section>
+            <h3>Methods</h3>
+            <dl class="methods" data-dfn-for="Navigator" data-link-for="Navigator">
+            <dt><code><dfn>getRemoteInvoker</dfn></code></dt><dd>
+                <p>Returns a <a>RemoteApplication</a> object for communicating with a remote application which launched this page.</p>
+                <div><em>Return type: </em><a>RemoteApplication</a></div>
+                <ol class="method-algorithm">
+                    <li>If no <a>RemoteApplication</a> object is assigned to this context's <a>Navigator</a> object return null.</li>
+                    <li>Let <var>R</var> be an object of <a>RemoteApplication</a> assigned to this context's <a>Navigator</a> object.</li>
+                    <li>If for the connection represented by <var>R</var>, message <a data-link-for="Messages">connected</a> has not been send. Send message <a data-link-for="Messages">connected</a> using <var>R</var> connection.</li>
+                    <li>
+                        <dl class="switch">
+                        <dt>If the message could not be send</dt>
+                        <dd>
+                        Change <a data-link-for="RemoteApplication">connectionState</a> of <var>R</var> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.
+                        </dd>
+                        <dt>Otherwise:</dt>
+                        <dd>
+                        Change <a data-link-for="RemoteApplication">connectionState</a> of <var>R</var> to <a data-link-for="RemoteApplicationConnectionState">connected</a>.
+                        </dd>
+                        </dl>
+                    </li>
+                    <li>Return <var>R</var>.</li>
+                </ol>
+            </dd></dl>
+        </section>
+    </section>
+    <section>
+        <h2>Interface <dfn>LocalNetworkDevices</dfn></h2>
+        <p>Allows the application to perform discovery step and detect compatible network devices.
+        </p>
+        <pre class="idl">
+        [NoInterfaceObject]
+        interface LocalNetworkDevices {
+            Promise&lt;sequence&lt;LocalNetworkDevice&gt;&gt; enumerateDevices ();
+        };
+        </pre>
+        <section>
+            <h3>Methods</h3>
+            <dl class="methods" data-dfn-for="LocalNetworkDevices" data-link-for="LocalNetworkDevices">
+            <dt><code><dfn>enumerateDevices</dfn></code></dt><dd>
+                <p>Scans local network and returns compatible devices.</p>
+                <div><em>Return type: </em><a>Promise</a>&lt;<a>sequence</a>&lt;<a>LocalNetworkDevice</a>&gt;&gt;</div>
+                </ul></div>
+                <ol class="method-algorithm">
+                <li>Let <var>P<var> be a new object of type <a>Promise</a>.</li>
+                <li>Return P but continue remaining steps <a>in parallel</a>.</li>
+                <li>If there is an unresolved <a>Promise</a> from previous call to this method, reject <var>P</var> with an <a>OperationError</a>.</li>
+                <li>Ask the user to the permission to scan local network.</li>
+                <li>If the user rejected permission request, reject <var>P</var> with a <a>NotAllowedError</a>.</li>
+                <li>Let <var>L</var> be a list of <a>LocalNetworkDevice</a> from the previous call to this method or an empty list if this is a first call.</li>
+                <li>Let <var>OutL</var> be an empty list of <a>LocalNetworkDevice</a>.</li>
+                <li>Scan the network using all implemented algortihms for compatible devices.</li>
+                <li>For each found device:
+                <ol>
+                    <li>If the device exists in <var>L</var> skip to the next device.</li>
+                    <li>Retrive necessary information for creating a <a>LocalNetworkDeviceDescriptor</a> object.</li>
+                    <li>Create a <a>LocalNetworkDeviceDescriptor</a> object using all the information from the previous step.</li>
+                    <li>Create a <a>LocalNetworkDevice</a> object with <a data-link-for="LocalNetworkDevice">descriptor</a> attribute using the descriptor created in the previous step.</li>
+                    <li>Add created device to <var>OutL</var>.</li>
+                </ol>
+                </li>
+                <li>Assign <var>OutL</var> to <var>L</var></li>
+                <li>Resolve <var>P</var> with <var>OutL</var>.</li>
+                </ol>
+            </dd></dl>
+        </section>
+    </section>
+    <section>
+        <h2>Interface <dfn>LocalNetworkDevice</dfn></h2>
+        <p>Represents and identifies the device found using implemented discovery algorithms which is compatible with WebDiAL.
+        </p>
+        <pre class="idl">
+        interface LocalNetworkDevice {
+            readonly attribute LocalNetworkDeviceDescriptor descriptor;
+            Promise&lt;RemoteApplication&gt; launch (DOMString url);
+        };
+        </pre>
+        <section>
+            <h3>Attributes</h3>
+            <dl class="attributes" data-dfn-for="LocalNetworkDevice" data-link-for="LocalNetworkDevice">
+            <dt><code><dfn>descriptor</dfn></code></dt>
+            <dd>Contains information useful in identificating the device.</dd>
+            </dl>
+        </section>
+        <section>
+            <h3>Methods</h3>
+            <dl class="methods" data-dfn-for="LocalNetworkDevice" data-link-for="LocalNetworkDevice">
+            <dt><code><dfn>launch</dfn></code></dt><dd>
+            <div><em>Parameters: </em><ul>
+            <li><var>url</var> – <code>DOMString</code> passed to the function representing the resource which should be launched on the device.</li>
+            </div>
+            <div><em>Return type: </em><a>Promise</a>&lt;<a>RemoteApplication</a>&gt;</div>
+            <ol class="method-algorithm">
+            <li>Let <var>P</var> be a new object of type <a>Promise</a>.</li>
+            <li>Check whether the currently executing task matches the conditions for <a>triggered by user activation</a> and if not return <var>P</var> rejected with a <a>SecurityError</a>.</li>
+            <li>If the launch algorithm is currently in progress for this device, return <var>P</var> rejected with an <a>OperationError</a>.</li>
+            <li>If the <var>url</var> is not a valid <a>URL</a>, return <var>P</var> rejected with a <a>SyntaxError</a>.</li>
+            <li>Return <var>P</var> but continue remaining steps <a>in parallel</a>.
+                <ol>
+                <li>Ask the user for the permission to launch given <var>url</var> on the device.</li>
+                <li>If the user rejected the permission, reject <var>P</var> with a <a>NotAllowedError</a> and abort this steps</li>
+                <li>Try to connect to the device, establish and authenticate the connection</li>
+                <li>Send <a data-link-for="Messages">request</a> message, containing <var>url</var> as payload</li>
+                <li>Create <a>RemoteApplication</a> object identifying the connection with <a data-link-for="RemoteApplicationConnectionState">connecting</a> as <a data-link-for="RemoteApplication">connectionState</a> atrtibute value and resolve <var>P</var> with this object.</li>
+                <li>If any of the above steps fail, reject <var>P</var> with a <a>TimeoutError</a>.</li>
+                </ol>
+            </li>
+            </ol>
+        </dd></dl>
+        </section>
+    </section>
+    <section>
+        <h2>Interface <dfn>RemoteApplication</dfn></h2>
+        <p>The object of this interface is used to comunnicate with a webpage residing in remote browsing context. Identifies the application, connnection and the device which was launched using <a>LocalNetworkDevice</a></p>
+        <pre class="idl">
+        enum RemoteApplicationConnectionState {
+            "connecting",
+            "connected",
+            "disconnected"
+        };
+        </pre>
+        <table class="simple" data-dfn-for="RemoteApplicationConnectionState" data-link-for="RemoteApplicationConnectionState"><tbody>
+        <tr><th colspan="2">Enumeration description</th></tr>
+        <tr><td><dfn>connecting</dfn></td><td><p>User agent tries to establish the connection.</p></td></tr>
+        <tr><td><dfn>connected</dfn></td><td><p>The connection is established and the remote end has opened the channel and is ready to receive messages.</p></td></tr>
+        <tr><td><dfn>disconnected</dfn></td><td><p>There is no connection to this application.</p></td></tr>
+        </tbody></table>
+        <pre class="idl">
+        interface RemoteApplication : EventTarget {
+            readonly attribute RemoteApplicationConnectionState connectionState;
+
+            attribute EventHandler onstatechange;
+            attribute EventHandler onmessage;
+
+            void reconnect();
+            void disconnect();
+            void send(DOMString message);
+            void send(Blob data);
+            void send(ArrayBuffer data);
+            void send(ArrayBufferView data);
+        };
+        </pre>
+        <section>
+            <h3>Variables</h3>
+            <dl class="attributes" data-dfn-for="RemoteApplication" data-link-for="RemoteApplication">
+            <dt><dfn><code>disconnectReason</code></dfn></dt><dd>Keeps the information about disconnection reason and initialy is empty to indicate that there was no disconnection.</dd>
+        </section>
+        <section>
+            <h3>Attributes</h3>
+            <dl class="attributes" data-dfn-for="RemoteApplication" data-link-for="RemoteApplication">
+            <dt><code><dfn>connectionState</dfn></code></dt>
+            <dd>Keeps the current connection state.</dd>
+            <dt><code><dfn>onstatechange</dfn></code></dt>
+            <dd>The event handler for the <a>statechange</a> event.</dd>
+            <dt><code><dfn>onmessage</dfn></code></dt>
+            <dd>The event handler for the <a>message event</a>.</dd>
+            </dl>
+        </section>
+        <section>
+            <h3>Methods</h3>
+            <dl class="methods" data-dfn-for="RemoteApplication" data-link-for="RemoteApplication">
+            <dt><code><dfn>reconnect</dfn></code></dt><dd>
+            <div><em>Return type: </em>void</div>
+            <p>Used to reestablish lost connection.</p>
+            <ol class="method-algorithm">
+            <li>If the user agent is currently executing <a>reconnecting</a> algorithm for this object, abort this steps.</li>
+            <li>If <a>connectionState</a> is different from <a data-link-for="RemoteApplicationConnectionState">disconnected</a>, <a>throw</a> an exception <a>InvalidStateError</a>.</li>
+            <li>Change <a>connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">connecting</a> and <a>fire an event</a> <a>statechange</a> which does not bubble and is not cancelable.</li>
+            <li>If <a>disconnectReason</a> is different from <code>"connection-lost"</code>:
+                <ol>
+                <li>Change <a>connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.</li>
+                <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable with <a data-link-for="StateChangeEvent">reason</a> equal to <a>disconnectReason</a>.</li>
+                <li>Abort this steps.</li>
+                </ol></li>
+            <li><a>In parallel</a> perform steps of <a>reconnecting</a> algorithm.</li>
+            </ol>
+        </dd>
+        <dt><code><dfn>disconnect</dfn></code></dt><dd>
+            <div><em>Return type: </em>void</div>
+            <p>Used to close the connection. This steps MUST be performed for each <a>RemoteApplication</a> which is eligible for <a>Garbage Collection</a>.</p>
+            <ol class="method-algorithm">
+            <li>If <a>connectionState</a> is <a data-link-for="RemoteApplicationConnectionState">disconnected</a> abort this steps.</li>
+            <li>If the connection is established to the device:
+                <ol>
+                <li>Send message <a data-link-for="Messages">disconnect</a> to the other device using the connection.</li>
+                <li>Close the connection.</li>
+                </ol>
+            </li>
+            <li>Change <a>connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.</li>
+            <li>Set <a>disconnectReason</a> to <code>"connection-closed"</code>.</li>
+            <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable with <a data-link-for="StateChangeEvent">reason</a> equal to <a>disconnectReason</a>.</li>
+            </ol>
+        </dd>
+        <dt><code><dfn data-lt="send!overload-1|send!overload-2|send!overload-3">send</dfn></code></dt><dd>
+            <div><em>Parameters: </em><ul>
+            <li><var>data</var> – the argument passed to the function.</li>
+            </div>
+            <div><em>Return type: </em>void</div>
+            <ol class="method-algorithm">
+            <li>If the <a>connectionState</a> is not equal to <a data-link-for="RemoteApplicationConnectionState">connected</a> <a>throw</a> a <a>InvalidStateError</a> exception.</li>
+            <li>For the type of <var>data</var>:
+            <dl class="switch">
+                <dt>If is <code>DOMString</code>:</dt>
+                <dd>Let the <var>messageType</var> be <code>"text"</code>.</dd>
+                <dt>If is <a>Blob</a>, <a>ArrayBuffer</a> or <a>ArrayBufferView</a>:</dt>
+                <dd><ol>
+                    <li>Let the <var>messageType</var> equal <code>"binary"</code>.</li>
+                    <li>If the type is <a>Blob</a>, let the <var>binaryType</var> be <code>"blob"</code>.</li>
+                    <li>If the type is <a>ArrayBuffer</a> or <a>ArrayBufferView</a>, let the <var>binaryType</var> be <code>"arraybuffer"</code>.</li>
+                </ol></dd>
+                <dt>Otherwise:</dt>
+                <dd><a>Throw</a> a <a>TypeError</a>.</dd>
+            </dl>
+            <li>Send message <a data-link-for="Messages">message</a> using the connection, where type is <var>messageType</var> and payload is <var>data</var>. If <var>messageType</var> is <code>"binary"</code>, set <a>binary type</a> to <var>binaryType</var>.</li>
+            </ol>
+        </dd>
+        </dl>
+        </section>
+        <section>
+            <h3>Event summary</h3>
+            <table class="simple">
+              <thead>
+                <tr>
+                  <th>Event name</th>
+                  <th>Interface</th>
+                  <th>Dispatched when...</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><dfn>statechange</dfn></td>
+                  <td><a>StateChangeEvent</a></td>
+                  <td><a data-link-for="RemoteApplication">connectionState</a> change occurs.</td>
+                </tr>
+                <tr>
+                  <td><dfn data-lt-noDefault data-lt="message event">message</dfn></td>
+                  <td><a>MessageEvent</a></td>
+                  <td>new message has arrived from the remote context.</td>
+                </tr>
+              </tbody>
+            </table>
+        </dd></dl>
+        <pre class="idl">
+        interface StateChangeEvent : Event {
+            readonly attribute DOMString reason;
+        };
+        </pre>
+        <p data-dfn-for="StateChangeEvent" data-link-for="StateChangeEvent"><dfn>StateChangeEvent</dfn> is an event for informing the application of a state change in a <a>RemoteApplication</a> object and providing a reason for this state change. <dfn>reason</dfn> is especially useful in case of a disconnect.</p>
+        </pre>
+        </section>
+        <section>
+            <h3>Algorithms</h3>
+            <section>
+                <h3><dfn>reconnecting<dfn></h3>
+                <p>Whenever the user agent detects that the connection from given <a>RemoteApplication</a> has been lost without receiving a <a data-link-for="Messages">disconnect</a> message it SHOULD perform below steps.</p>
+                <ol class="method-algorithm">
+                <li>If <a data-link-for="RemoteApplication">connectionState</a> is not equal to <a data-link-for="RemoteApplicationConnectionState">connecting</a>.</li>
+                <ol>
+                    <li>Change <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">connecting</a>.</li>
+                    <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable.</li>
+                </ol></li>
+                <li>Try to reestablish the connection.
+                <dl class="switch">
+                <dt>If the connection was reestablished successfully:</dt>
+                <dd><ol>
+                    <li>If the <a data-link-for="RemoteApplication">connectionState</a> was <a data-link-for="RemoteApplicationConnectionState">connected</a> at some point for this connection set <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">connected</a>.</li>
+                    <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable.</li>
+                </ol></dd>
+                <dt>If the device does not respond after the user agent defined time:</dt>
+                <dd><ol>
+                    <li>Change <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.</li>
+                    <li>Set <a data-link-for="RemoteApplication">disconnectReason</a> to <code>"connection-lost"</code>.</li>
+                    <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable with <a data-link-for="StateChangeEvent">reason</a> equal to <a>disconnectReason</a>.</li>
+                </ol></dd>
+                <dt>Otherwise:</dt>
+                <dd><ol>
+                    <li>Change <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.</li>
+                    <li>Set <a data-link-for="RemoteApplication">disconnectReason</a> to <code>"connection-closed"</code>.</li>
+                    <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable with <a data-link-for="StateChangeEvent">reason</a> equal to <a>disconnectReason</a>.</li>
+                </ol></dd>
+                </li>
+                </ol>
+        </section>
+        <section>
+            <h3>Receving a message</h3>
+            <p>After receiving a <a data-link-for="Messages">request</a> message, the user agent must drop all messages which are not <a data-link-for="Messages">disconnect</a> from this connection.<p>
+            <p>After receiving a <a data-link-for="Messages">connected</a> message, the user agent must drop all <a data-link-for="Messages">connected</a> messages from this connection.</p>
+            <p>After sending a <a data-link-for="Messages">request</a> message, the user agent must drop all messages which are not <a data-link-for="Messages">connected</a> or <a data-link-for="Messages">disconnect</a> messages.</p>
+            <p>After sending a <a data-link-for="Messages">connected</a> message, the user agent must drop all <a data-link-for="Messages">request</a> messages.</p>
+            <p>After receving a valid message, the user agent MUST execute a algorithm matching the message received.</p>
+            <section>
+                <h4>Receiving a <a data-link-for="Messages">disconnect</a> message</h4>
+                <p>After the user agent has received a <a data-link-for="Messages">disconnect</a> message through a given <a>RemoteApplication</a> connection it MUST perform below steps:</p>
+                <ol class="method-algorithm">
+                <li>If <a data-link-for="RemoteApplication">connectionState</a> is <a data-link-for="RemoteApplicationConnectionState">disconnected</a>, abort this steps.</li>
+                <li>Change <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">disconnected</a>.</li>
+                <li>Set <a data-link-for="RemoteApplication">disconnectReason</a> to <code>"connection-closed"</code>.</li>
+                <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable with <a data-link-for="StateChangeEvent">reason</a> equal to <a>disconnectReason</a>.</li>
+                </ol>
+            </section>
+            <section>
+                <h4>Receiving a <a data-link-for="Messages">request</a> message</h4>
+                <p>After the new connection has been established and the user agent has received a <a data-link-for="Messages">request</a> message it MUST perform below steps:</p>
+                <div><em>Parameters: </em><ul>
+                <li><var>url</var> – <code>DOMString</code> received as a message payload.</li>
+                </div>
+                <ol class="method-algorithm">
+                <li>Ask the user for the permission to launch <var>url</var>. The user agent SHOULD display information about the device which has sent launch request.</li>
+                <li>If the user rejected the permission send using the connection, <a data-link-for="Messages">disconnect</a> message and abort this steps.</li>
+                <li>Create new <a>browsing context</a> <var>C</var>.</li>
+                <li>Load <var>url</var> in <var>C</var>.</li>
+                <li>Create object <a>RemoteApplication</a> which uses this connection. With <a data-link-for="RemoteApplication">connectionState</a> set to <a data-link-for="RemoteApplicationConnectionState">connecting</a> and assign it to the <a>Navigator</a> object in <var>C</var>.</li>
+                </ol>
+            </section>
+            <section>
+                <h4>Receiving a <a data-link-for="Messages">connected</a> message</h4>
+                <p>After the user agent has received <a data-link-for="Messages">connected</a> message through a given <a>RemoteApplication</a> connection it MUST perform below steps:</p>
+                <ol class="method-algorithm">
+                <li>If <a data-link-for="RemoteApplication">connectionState</a> is not <a data-link-for="RemoteApplicationConnectionState">connecting</a> abort this steps.</li>
+                <li>Change <a data-link-for="RemoteApplication">connectionState</a> to <a data-link-for="RemoteApplicationConnectionState">connected</a>.</li>
+                <li>Fire a <a>statechange</a> event which does not bubble and is not cancelable.</li>
+                </ol>
+            </section>
+            <section>
+                <h4>Receiving a <a data-link-for="Messages">message</a> message</h4>
+                <p>After the user agent has received <a data-link-for="Messages">message</a> message through a given <a>RemoteApplication</a> connection it MUST perform below steps:</p>
+                <div><em>Parameters: </em><ul>
+                <li><var>data</var> – a message payload.</li>
+                <li><var>messageType</var> – type of the payload.</li>
+                <li><var>binaryType</var> – binary type of the payload, only if the <var>messageType</var> is <code>"binary"</code></li>
+                </div>
+                <ol class="method-algorithm">
+                <li>Let <var>E</var> be an <a>MessageEvent</a>.</li>
+                <li>For the <var>messageType</var> equal to:
+                    <dl class="switch">
+                    <dt><code>"text"</code></dt>
+                    <dd>Create <code>DOMString</code> object using <var>data</var> and set it as <code>data</code> attribute of <var>E</var>.</dd>
+                    <dt><code>"binary"</code></dt>
+                    <dd>For the <var>binaryType</var> equal to:
+                        <dl class="switch">
+                        <dt><code>"arraybuffer"</code></dt>
+                        <dd>Create <a>ArrayBuffer</a> object using <var>data</var> and set it as <code>data</code> attribute of <var>E</var>.</dd>
+                        <dt><code>"blob"</code></dt>
+                        <dd>Create <a>Blob</a> object using <var>data</var> and set it as <code>data</code> attribute of <var>E</var>.</dd>
+                </li>
+                <li>Fire <var>E</var> with give <a>RemoteApplication</a> as it's target.</li>
+                </ol>
+            </section>
+        </section>
+    </section>
+    <section>
+        <h2>Interface <dfn>LocalNetworkDeviceDescriptor</dfn></h2>
+        <p>Object of this interface contains information useful for the application to identify and present the device to the user.</p>
+        <p>Whenever a protocol used for discovery purposes requires additional information provided to the application, they MUST be placed as attributes of this interface.</p>
+        <pre class="idl">
+        interface LocalNetworkDeviceDescriptor {
+            readonly attribute DOMString name;
+        };
+        </pre>
+        <section>
+            <h3>Attributes</h3>
+            <dl class="attributes" data-dfn-for="LocalNetworkDeviceDescriptor" data-link-for="LocalNetworkDeviceDescriptor">
+            <dt><code><dfn>name</dfn></code></dt>
+            <dd>The attribute SHOULD contain user-friendly name of the device allowing the user to distinguish between the devices. In case the device advertised it's name, this name SHOULD be used. Otherwise network name or ip address SHOULD be used</dd>
+            </dl>
+        </section>
+    </section>
+    <section>
+        <h2>Messages</h2>
+        <p>Below are the definitions of the messages used to communicate between user agents.</p>
+        <table class="simple" data-dfn-for="Messages" data-link-for="Messages">
+          <thead>
+            <tr>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><dfn>request</dfn></td>
+              <td>Launch request which contains <a>URL</a> to be loaded as it's payload.</td>
+            </tr>
+            <tr>
+              <td><dfn>connected</dfn></td>
+              <td>The application has loaded and is ready to receive data meaning it has <a>RemoteApplication</a> object.</td>
+            </tr>
+            <tr>
+              <td><dfn>disconnect</dfn></td>
+              <td>The application has closed the connection or the user agent has rejected the launch request.</td>
+            </tr>
+            <tr>
+              <td><dfn>message</dfn></td>
+              <td>Contains data exchanged between the applications.</td>
+            </tr></tbody>
+        </table>
+    </section>
+  </body>
+</html>
